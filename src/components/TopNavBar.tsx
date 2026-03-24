@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { NAV_LINKS } from '../constants';
 
+/**
+ * @component TopNavBar
+ * @description 全站共用的頂層導覽列。
+ * 提供站內路由切換、全域搜尋（導向 Browse 頁面），以及購物車等使用者互動功能。
+ */
 export const TopNavBar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
+  /**
+   * 處理搜尋表單提交，跳轉至探索頁面並附帶 Query Parameter
+   */
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -33,9 +42,11 @@ export const TopNavBar: React.FC = () => {
         <div className="flex items-center gap-12">
           <Link to="/" className="text-2xl font-black tracking-tighter text-[#eff0fa] font-headline">Digital Curator</Link>
           <div className="hidden md:flex gap-8 items-center">
-            <Link className={getLinkClass('/')} to="/">Home</Link>
-            <Link className={getLinkClass('/browse')} to="/browse">Browse</Link>
-            <Link className={getLinkClass('/blog')} to="/blog">Blog</Link>
+            {NAV_LINKS.map(link => (
+              <Link key={link.href} className={getLinkClass(link.href)} to={link.href}>
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
         <div className="flex items-center gap-6">

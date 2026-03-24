@@ -1,21 +1,4 @@
-export interface GameRecommendation {
-  id: number;
-  title: string;
-  description: string;
-  threadsComment: string;
-  imageUrl: string;
-  steamUrl: string;
-}
-
-export interface Article {
-  id: string;
-  category: string;
-  date: string;
-  title: string;
-  description: string;
-  heroImage: string;
-  games: GameRecommendation[];
-}
+import { Article } from '../types';
 
 export const articles: Article[] = [
   {

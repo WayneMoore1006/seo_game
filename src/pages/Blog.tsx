@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { articles } from '../data/articles';
+import { NewsletterBox } from '../components/ui/NewsletterBox';
+import { POPULAR_TAGS } from '../constants';
 
+/**
+ * @component Blog
+ * @description 遊戲網誌與社群推薦入口頁面。
+ * 負責渲染動態擷取的 Threads 推薦文章，並提供精選導讀與電子報訂閱功能。
+ */
 export const Blog: React.FC = () => {
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success('Successfully subscribed to Weekly Digest!');
-  };
 
   const heroArticle = articles[1]; // Action & Puzzle
   const featuredArticles = [articles[2], articles[3]]; // Sim and Horror
@@ -95,28 +97,17 @@ export const Blog: React.FC = () => {
 
         {/* Sidebar */}
         <aside className="xl:col-span-4 space-y-10">
-          {/* Newsletter Box */}
-          <div className="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/5 shadow-2xl shadow-primary/5 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10">
-              <h3 className="font-headline text-lg font-bold mb-3">Weekly Digest</h3>
-              <p className="text-on-surface-variant text-sm mb-6 leading-relaxed">The best of gaming news and deep dives, delivered straight to your inbox every Friday.</p>
-              <form onSubmit={handleSubscribe} className="space-y-3">
-                <input required className="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-md py-2 px-4 text-sm focus:ring-1 focus:ring-primary outline-none" placeholder="Your email address" type="email"/>
-                <button type="submit" className="w-full primary-gradient text-on-primary font-bold py-2 rounded-md text-sm active:scale-95 transition-transform">Subscribe Now</button>
-              </form>
-            </div>
-            <span className="material-symbols-outlined absolute -right-4 -bottom-4 text-primary/10 text-[100px] -rotate-12">mail</span>
-          </div>
+          {/* Newsletter Box component extracted to ui/NewsletterBox.tsx */}
+          <NewsletterBox />
 
           <div className="p-6 rounded-xl bg-surface-container-low border border-outline-variant/5">
             <h4 className="font-bold text-sm mb-4">Popular Tags</h4>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-surface-container-highest rounded text-xs font-semibold text-on-surface-variant hover:text-primary cursor-pointer transition-colors">Co-op</span>
-              <span className="px-3 py-1 bg-surface-container-highest rounded text-xs font-semibold text-on-surface-variant hover:text-primary cursor-pointer transition-colors">Party Games</span>
-              <span className="px-3 py-1 bg-surface-container-highest rounded text-xs font-semibold text-on-surface-variant hover:text-primary cursor-pointer transition-colors">Horror</span>
-              <span className="px-3 py-1 bg-surface-container-highest rounded text-xs font-semibold text-on-surface-variant hover:text-primary cursor-pointer transition-colors">Survival</span>
-              <span className="px-3 py-1 bg-surface-container-highest rounded text-xs font-semibold text-on-surface-variant hover:text-primary cursor-pointer transition-colors">Indie</span>
+              {POPULAR_TAGS.map(tag => (
+                <span key={tag} className="px-3 py-1 bg-surface-container-highest rounded text-xs font-semibold text-on-surface-variant hover:text-primary cursor-pointer transition-colors">
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         </aside>
