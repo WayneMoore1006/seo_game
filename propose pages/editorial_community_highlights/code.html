@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog | Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed": "#22500a",
+                        "on-error": "#490006",
+                        "on-surface": "#eff0fa",
+                        "on-secondary-fixed": "#1f3d53",
+                        "surface-dim": "#0b0e15",
+                        "secondary-fixed-dim": "#b2cfeb",
+                        "surface-container-high": "#1c2029",
+                        "surface-container-highest": "#212630",
+                        "surface-container-lowest": "#000000",
+                        "on-secondary": "#334f67",
+                        "secondary-fixed": "#c0ddfa",
+                        "surface-container-low": "#10131b",
+                        "on-background": "#eff0fa",
+                        "surface-tint": "#71caff",
+                        "on-primary": "#00415c",
+                        "tertiary-dim": "#b7ef97",
+                        "inverse-primary": "#00668e",
+                        "surface-container": "#161a22",
+                        "tertiary": "#eeffde",
+                        "on-primary-container": "#002638",
+                        "tertiary-fixed-dim": "#b7ef97",
+                        "primary-dim": "#62bdf0",
+                        "tertiary-container": "#c2fba1",
+                        "tertiary-fixed": "#c5fea4",
+                        "primary": "#71caff",
+                        "on-tertiary": "#3b6a23",
+                        "primary-fixed": "#71caff",
+                        "primary-fixed-dim": "#62bdf0",
+                        "secondary": "#c0ddfa",
+                        "on-error-container": "#ffa8a3",
+                        "error-dim": "#d7383b",
+                        "on-surface-variant": "#a9abb4",
+                        "background": "#0b0e15",
+                        "surface-bright": "#272c37",
+                        "on-primary-fixed": "#002b3f",
+                        "secondary-container": "#2d4a61",
+                        "surface-variant": "#212630",
+                        "surface": "#0b0e15",
+                        "on-tertiary-container": "#32621b",
+                        "error-container": "#9f0519",
+                        "on-secondary-fixed-variant": "#3c5971",
+                        "outline-variant": "#454850",
+                        "outline": "#73757e",
+                        "primary-container": "#4daadc",
+                        "error": "#ff716c",
+                        "on-primary-fixed-variant": "#004b69",
+                        "inverse-on-surface": "#52555d",
+                        "inverse-surface": "#f9f9ff",
+                        "secondary-dim": "#b2cfeb",
+                        "on-tertiary-fixed-variant": "#3e6e26",
+                        "on-secondary-container": "#b6d4f0"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(33, 38, 48, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #71caff 0%, #4daadc 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<header class="bg-[#0b0e15] docked full-width top-0 z-50 sticky">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black tracking-tighter text-[#eff0fa] font-headline">Digital Curator</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Manrope'] tracking-tight text-sm font-medium text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Home</a>
+<a class="font-['Manrope'] tracking-tight text-sm font-medium text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Browse</a>
+<a class="font-['Manrope'] tracking-tight text-sm font-medium text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Community</a>
+<a class="font-['Manrope'] tracking-tight text-sm font-medium text-[#71caff] border-b-2 border-[#71caff] pb-1 font-bold" href="#">Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-lowest border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-1 focus:ring-primary outline-none text-on-surface transition-all" placeholder="Search articles..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#a9abb4] hover:text-[#eff0fa] transition-colors scale-95 active:scale-90" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-[#a9abb4] hover:text-[#eff0fa] transition-colors scale-95 active:scale-90" data-icon="shopping_cart">shopping_cart</button>
+<div class="w-8 h-8 rounded-full bg-surface-bright overflow-hidden border border-outline-variant/20">
+<img alt="User profile" data-alt="close-up portrait of a professional man with a friendly expression in a modern studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYwh7etUJ2o9KWViCYUGH6ftRr1T-ycm4ShmOZAOtfryDYKnqDRlRDMYebK_3uvfdYdMxar2tUQNlbuBzgMoyhKAs-mu8XSkToPBePDll00g--zmfnkqXOwpEXFBOwZOZIoavMb6chXRcBiZQh2eYBlRherOkOrJc15cfo9bY4q-6esqeCn6-cWjPJqSP8COi7Uuw-wQCPnH0dOnTtOCgkKYJA9QHD4I0kl0FMW2VjL-up2jWtoJo39qx8ZgdRIvlLTgp21qcMNaHP"/>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="max-w-screen-2xl mx-auto px-8 py-12">
+<!-- Featured Hero Section -->
+<section class="mb-16">
+<div class="relative w-full aspect-[21/9] rounded-xl overflow-hidden group">
+<img alt="Featured article" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="cinematic wide shot of a futuristic neon-lit gaming arena with professional players and atmospheric blue and magenta lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhqZBhCY7HLZo-Q4dAGGvicxUjpQVeUAgYb1s-gRJq7CEU-d7XQgvlfKEKvQINCBCDQEPZEuqKuCOTGA3CVanLus_po10i90VVnmWbLc_5qlJXTs6yWHkUjSGUMvkKzMotbaR0j_IAGjMUV6LP0ORFDFFEQorL6F5aJAc9C39-CT5ZFJnXwy7F4ZNtG3tXH6Nv1RQUKzKSQfoy-cxzRJEn-adsNAB2dIgH2XG6hynSnA0GtfkmvR_ESRemJfHfs8ma9rdbaajF-BdD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-12 max-w-3xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-primary-container/20 text-primary text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase border border-primary/20">Editorial</span>
+<span class="text-on-surface-variant text-xs font-medium">12 Min Read • By Alex Rivers</span>
+</div>
+<h1 class="font-headline text-5xl font-extrabold tracking-tighter text-on-surface mb-6 leading-[1.1]">The Rise of Social Gaming: Why Playing Together is the New Meta</h1>
+<p class="text-on-surface-variant text-lg font-light leading-relaxed mb-8 max-w-2xl">From pixelated couch co-ops to massive digital universes, the way we connect through games is undergoing a radical transformation. We explore the technology and psychology behind the trend.</p>
+<button class="primary-gradient text-on-primary px-8 py-3 rounded-md font-bold text-sm tracking-tight transition-transform active:scale-95 flex items-center gap-2 group/btn">
+                        Read Full Story
+                        <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Discovery -->
+<section class="mb-20">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-3xl font-bold tracking-tight">Trending Deep Dives</h2>
+<a class="text-primary text-sm font-semibold flex items-center gap-1 hover:underline" href="#">View all articles <span class="material-symbols-outlined text-xs">chevron_right</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Large Vertical Card -->
+<div class="md:row-span-2 bg-surface-container rounded-xl overflow-hidden group hover:bg-surface-container-high transition-all duration-300">
+<div class="h-1/2 overflow-hidden">
+<img alt="Co-op games" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="overhead shot of friends sitting on a dark sofa playing video games with glowing controllers in a cozy dimly lit room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTNkjslBtLqoVuEuIP5TaATXf2fuCUVysB3UfV1xX5NkBrLqOoI5lTVzSMKEjMAuYMLuET_rX34QEWHOL5kdz_pnJpPjrFjHxDKNL1ROwGcWKYkOpIlWBXKl-zQzW7C2ptYLEbCJtsBbROIgGjjmpDt9Xkd3Mz-pG6Tsap3WgcT1RLd9WwddxVS3lOprEmO5M_u2bpeqvX1QBaXbzW4mGr5Ul02s-ICMxtTIaT-acWE3cRh7tIoRcZY6La-ri1jNi6E7ZKjYz4S8pD"/>
+</div>
+<div class="p-8">
+<span class="text-primary text-[10px] font-bold tracking-widest uppercase mb-4 block">Collections</span>
+<h3 class="font-headline text-2xl font-bold mb-4 leading-snug">Top 5 Co-op Games for Your Next House Party</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Forget Monopoly. These modern masterpieces are designed to bring friends together (and occasionally tear them apart).</p>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant border-t border-outline-variant/10 pt-6">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>May 15, 2024</span>
+</div>
+</div>
+</div>
+<!-- Wide Horizontal Card -->
+<div class="md:col-span-2 bg-surface-container rounded-xl overflow-hidden flex flex-col md:flex-row group hover:bg-surface-container-high transition-all duration-300">
+<div class="md:w-1/2 overflow-hidden">
+<img alt="Indie spotlight" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="artistic macro shot of mechanical keyboard keys with vibrant rgb lighting reflecting off a dark metallic surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAWmIJ6R7WNWlisxfLvJiEcUvIO5hSJktE4mgtcLY0g8GMA-m0AaB-j4uBZfjYE6sbd5GlzpDuBOb41sdaDAxv6i2OVq2UNr99KMrFZxSgYP_CoGeLi3KL9NBSsyesDuYwnqeyRwIuPE6Tw_uXXWieThIkHKxRj50HCvV1HIMD7Y5zm3WJWDPuw0nq99XAwltdbDxmrkIyfjfJWgINVNW_1E4u_ajN7CZe67Z2ip-rUgpOW4XzOonKnW-qbobBYxENqbH7Uj11Bjsd"/>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-center">
+<span class="text-tertiary-dim text-[10px] font-bold tracking-widest uppercase mb-4 block">Indie Spotlight</span>
+<h3 class="font-headline text-2xl font-bold mb-4 leading-snug">Hidden Gems: The Best Indie Games You Missed This Year</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Small studios are doing big things. We've curated the most innovative titles that flew under the radar.</p>
+<a class="text-primary text-sm font-bold flex items-center gap-2 group-hover:translate-x-1 transition-transform" href="#">Read Analysis <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+</div>
+</div>
+<!-- Square Card 1 -->
+<div class="bg-surface-container rounded-xl p-8 group hover:bg-surface-container-high transition-all duration-300 relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-error-dim text-[10px] font-bold tracking-widest uppercase mb-4 block">Tech</span>
+<h3 class="font-headline text-xl font-bold mb-4">Hardware Review: The Next Generation of VR</h3>
+<p class="text-on-surface-variant text-sm mb-6">Is wireless fidelity finally here? We test the latest headsets.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" data-icon="settings_input_hdmi">settings_input_hdmi</span>
+</div>
+</div>
+<!-- Square Card 2 -->
+<div class="bg-surface-container rounded-xl p-8 group hover:bg-surface-container-high transition-all duration-300 relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-secondary-fixed-dim text-[10px] font-bold tracking-widest uppercase mb-4 block">Industry</span>
+<h3 class="font-headline text-xl font-bold mb-4">The Economics of Season Passes</h3>
+<p class="text-on-surface-variant text-sm mb-6">A deep look into how monetization affects game design loop.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" data-icon="payments">payments</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent & Community Split Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+<!-- Recent Recommendations (List View) -->
+<div class="lg:col-span-2">
+<h2 class="font-headline text-2xl font-bold mb-8 border-l-4 border-primary pl-4">Latest Recommendations</h2>
+<div class="space-y-10">
+<!-- List Item 1 -->
+<article class="group cursor-pointer">
+<div class="flex gap-8 items-start">
+<div class="w-48 aspect-video rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img alt="Tech recommendation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="close-up of a high-tech gaming computer build with sleek wiring and soft purple neon glowing internal components" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCryQ1tNZkUUs6Jq1uaZzCZQx8WF6DR224qxK0RJaN7Q_9_GgHb2E9HHSoma7_BQ8eO8PeEBnWBaJVInsMcjuFJGkcFcxKBABxOI6YYallZoAWjT41pprh4LF0KsH4dDvH0Z5B_iuQmitP9XLy29cOs-_oYOIEq6weGPggD8XDg4L95q9cy3E8bNaYewNktsBvsqfIicpGU0VszbYvEjPYxjSiXtdS79dddsHu54BuP-QUrjTS_IzTav5yR6v0SsbkbwXDfUdcdVTpm"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="text-primary font-bold text-[10px] uppercase tracking-widest">Hardware</span>
+<span class="text-on-surface-variant text-[10px]">MAY 14, 2024</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2 group-hover:text-primary transition-colors">Why Your Next PC Should Be a Small Form Factor (SFF)</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed line-clamp-2">The days of monolithic towers are over. Discover how compact builds are reaching desktop-level performance without the footprint.</p>
+</div>
+</div>
+</article>
+<!-- List Item 2 -->
+<article class="group cursor-pointer">
+<div class="flex gap-8 items-start">
+<div class="w-48 aspect-video rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img alt="RPG recommendation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="atmospheric scene of a stylized fantasy landscape with a lone adventurer looking towards a massive castle in the distance under a starry night sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHrSsCIhAoFTUtLv2grs7f2wON0Xzj9QQ7OG77QGy-iR32DHocTqnT3uvt5et_UZ7y81hWGIpaKT2Dv2TsUEWA7sP93dpiqVVjbhN0VPysP5jvwzQ_7rStibF_iNbhYUa1Wy6nKk2nRq7UZqeeMbjlgQipmIi5NUdUETZA_4ntCqZWPryXjxWW7mLOtxt_XoU3kuNIIt13drDnvau8sF4i12ZE2NLx3uIhaB7gotksUGrhHCA_Cjiag8Qi8qW3eJDS_oM_GywF4SOz"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="text-primary font-bold text-[10px] uppercase tracking-widest">Genre Study</span>
+<span class="text-on-surface-variant text-[10px]">MAY 12, 2024</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2 group-hover:text-primary transition-colors">The Art of World-Building in Modern RPGs</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed line-clamp-2">How environmental storytelling is replacing traditional dialogue trees to create more immersive experiences.</p>
+</div>
+</div>
+</article>
+<!-- List Item 3 -->
+<article class="group cursor-pointer">
+<div class="flex gap-8 items-start">
+<div class="w-48 aspect-video rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img alt="Competitive gaming" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="close-up of a professional gamer focusing on the screen with intense concentration and colorful light reflecting off their face in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUBtFrrcdrfSrSBBLnb7YbSodGWotTutGi-Njx4tl8ClKtHK7WGvaW-jDuYMe6TEOBFrXSXMkHgiblBy1Go3JJSGbHjHF1zE2BmkOvVDtcbmmgALQMpR5IIbX0_MpeLiwmfXpmyt-kAsxkv2BoQ3xqspULwsmREmbq9Isoh7rZs58BGGAW3nKmtnsij22l7rMQrhh06YynWRhKK9Ute-cJ9lLVWN8ozaPONTIZOEnjuN4vNSLrw_mtj1BkdfKGLqQm7Z_kwLV792tz"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="text-primary font-bold text-[10px] uppercase tracking-widest">eSports</span>
+<span class="text-on-surface-variant text-[10px]">MAY 10, 2024</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2 group-hover:text-primary transition-colors">Mental Fortitude: The New Barrier in Competitive Gaming</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed line-clamp-2">Pro teams are hiring sports psychologists at record rates. We look into why the mental game is the hardest to master.</p>
+</div>
+</div>
+</article>
+</div>
+<button class="mt-12 w-full py-4 border border-outline-variant/20 rounded-lg text-on-surface-variant font-medium text-sm hover:bg-surface-container transition-colors">Load More Articles</button>
+</div>
+<!-- Community Highlights (Sidebar) -->
+<div class="space-y-12">
+<div>
+<h2 class="font-headline text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                        Community Highlights
+                    </h2>
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10">
+<div class="space-y-6">
+<div class="flex items-start gap-4 pb-6 border-b border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">forum</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant mb-1">Top Discussion</p>
+<h4 class="text-sm font-bold text-on-surface mb-2">What's your most controversial gaming opinion?</h4>
+<p class="text-[11px] text-on-surface-variant">2.4k Comments • Trending now</p>
+</div>
+</div>
+<div class="flex items-start gap-4 pb-6 border-b border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-tertiary-dim/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary-dim text-sm">palette</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant mb-1">Fan Art Showcase</p>
+<h4 class="text-sm font-bold text-on-surface mb-2">Cyber-punk 2077: Remastered (Concept Art)</h4>
+<p class="text-[11px] text-on-surface-variant">Artist: @NeonPixel • 840 Likes</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-error/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error text-sm">favorite</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant mb-1">Community Milestone</p>
+<h4 class="text-sm font-bold text-on-surface mb-2">Digital Curator hit 500k active members!</h4>
+<p class="text-[11px] text-on-surface-variant">Celebrating 2 years of curation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Newsletter Card -->
+<div class="glass-panel p-8 rounded-xl border border-primary/20 relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline text-lg font-bold mb-3">Weekly Digest</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">The best of gaming news and deep dives, delivered straight to your inbox every Friday.</p>
+<form class="space-y-3">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-md py-2 px-4 text-sm focus:ring-1 focus:ring-primary outline-none" placeholder="Your email address" type="email"/>
+<button class="w-full primary-gradient text-on-primary font-bold py-2 rounded-md text-sm">Subscribe Now</button>
+</form>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-primary/10 text-[100px] -rotate-12" data-icon="mail">mail</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0b0e15] w-full border-t border-[#161a22] mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 gap-6 max-w-screen-2xl mx-auto border-t border-opacity-15 border-[#eff0fa]">
+<div class="flex flex-col gap-4">
+<span class="text-lg font-bold text-[#eff0fa] font-headline">Digital Curator</span>
+<p class="font-['Inter'] text-xs text-[#a9abb4]">© 2024 Digital Curator. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">About Us</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Support</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Careers</a>
+</div>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-[#a9abb4] hover:text-[#71caff] transition-all" href="#"><span class="material-symbols-outlined text-sm">public</span></a>
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-[#a9abb4] hover:text-[#71caff] transition-all" href="#"><span class="material-symbols-outlined text-sm">alternate_email</span></a>
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-[#a9abb4] hover:text-[#71caff] transition-all" href="#"><span class="material-symbols-outlined text-sm">podcasts</span></a>
+</div>
+</div>
+</footer>
+</body></html>

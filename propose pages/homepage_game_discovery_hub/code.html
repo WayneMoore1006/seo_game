@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed": "#22500a",
+                        "on-error": "#490006",
+                        "on-surface": "#eff0fa",
+                        "on-secondary-fixed": "#1f3d53",
+                        "surface-dim": "#0b0e15",
+                        "secondary-fixed-dim": "#b2cfeb",
+                        "surface-container-high": "#1c2029",
+                        "surface-container-highest": "#212630",
+                        "surface-container-lowest": "#000000",
+                        "on-secondary": "#334f67",
+                        "secondary-fixed": "#c0ddfa",
+                        "surface-container-low": "#10131b",
+                        "on-background": "#eff0fa",
+                        "surface-tint": "#71caff",
+                        "on-primary": "#00415c",
+                        "tertiary-dim": "#b7ef97",
+                        "inverse-primary": "#00668e",
+                        "surface-container": "#161a22",
+                        "tertiary": "#eeffde",
+                        "on-primary-container": "#002638",
+                        "tertiary-fixed-dim": "#b7ef97",
+                        "primary-dim": "#62bdf0",
+                        "tertiary-container": "#c2fba1",
+                        "tertiary-fixed": "#c5fea4",
+                        "primary": "#71caff",
+                        "on-tertiary": "#3b6a23",
+                        "primary-fixed": "#71caff",
+                        "primary-fixed-dim": "#62bdf0",
+                        "secondary": "#c0ddfa",
+                        "on-error-container": "#ffa8a3",
+                        "error-dim": "#d7383b",
+                        "on-surface-variant": "#a9abb4",
+                        "background": "#0b0e15",
+                        "surface-bright": "#272c37",
+                        "on-primary-fixed": "#002b3f",
+                        "secondary-container": "#2d4a61",
+                        "surface-variant": "#212630",
+                        "surface": "#0b0e15",
+                        "on-tertiary-container": "#32621b",
+                        "error-container": "#9f0519",
+                        "on-secondary-fixed-variant": "#3c5971",
+                        "outline-variant": "#454850",
+                        "outline": "#73757e",
+                        "primary-container": "#4daadc",
+                        "error": "#ff716c",
+                        "on-primary-fixed-variant": "#004b69",
+                        "inverse-on-surface": "#52555d",
+                        "inverse-surface": "#f9f9ff",
+                        "secondary-dim": "#b2cfeb",
+                        "on-tertiary-fixed-variant": "#3e6e26",
+                        "on-secondary-container": "#b6d4f0"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-overlay { backdrop-filter: blur(20px); background: rgba(33, 38, 48, 0.6); }
+        .primary-gradient { background: linear-gradient(135deg, #71caff 0%, #4daadc 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="bg-[#0b0e15] dark:bg-[#0b0e15] fixed top-0 z-50 w-full">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black tracking-tighter text-[#eff0fa] font-headline">Digital Curator</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#71caff] border-b-2 border-[#71caff] pb-1 font-bold font-headline tracking-tight text-sm" href="#">Home</a>
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 font-headline tracking-tight text-sm" href="#">Browse</a>
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 font-headline tracking-tight text-sm" href="#">Community</a>
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 font-headline tracking-tight text-sm" href="#">Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-lowest rounded-full px-4 py-2 w-64 border border-outline-variant/15">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none text-xs focus:ring-0 text-on-surface p-0 w-full placeholder:text-on-surface-variant" placeholder="Search curated library..." type="text"/>
+</div>
+<div class="flex gap-4">
+<button class="text-[#a9abb4] hover:bg-[#272c37] p-2 rounded-full transition-all duration-200 ease-out active:scale-90">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-[#a9abb4] hover:bg-[#272c37] p-2 rounded-full transition-all duration-200 ease-out active:scale-90">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<div class="w-9 h-9 rounded-full overflow-hidden border border-outline-variant/30 cursor-pointer">
+<img alt="User profile and settings" data-alt="close-up portrait of a professional man with neutral expression in soft studio lighting against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwW_6_BvDR7NPgR1p2iSJw0QabThIELnv1VQbM_L1Xt3WCaa__QrQnfaRsOZuiknwvZ-608SsGctpbZ48XcRJx0vbPmj0FSHfNXDBOWINemrKDIDvoQLGNscKj8IeI8jV21lG0aaGlp42biX_2v3X6boLZmM2G_s1LejpCea74MYUx5SUsAI46dj8Y3judT74X3o2VQHBk5SrlzieI1UFrqNBINI6UxuSn2TZ_kb5fC-X5o7Ao8Tc6CkdGCkJk7T6Oyja_q39pXWzg"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section: Cinematic Discovery -->
+<section class="relative h-[870px] w-full overflow-hidden flex items-end px-8 pb-20 md:px-16 lg:px-24">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent z-10"></div>
+<img alt="Hero Trailer Background" class="w-full h-full object-cover scale-105" data-alt="cinematic action shot of a sci-fi cooperative tactical shooter game with squad members in high-tech armor facing a glowing alien threat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1HCWZfzhc9FG-UkOjJGwzCOmGX0M5VF44C-RFT3_kfq9U9v_WcMto39vidh0Sdr0F3UsbUwmFeRFhlMOtcoAt102jBDK7HLG2DqgsDNtJDevdZOj_aa35sR9xzlulM1RiJ10wZebaq_5YhR-V6XVg8087MF054T9lFBFemWOvBAUbtQO91w-5U9SnsZ3I17Gp3d-coNFhdQiUFjp3bstICATRqC3HdUW0dmtvnBUb5ont69MdqmVXbDeQwz_D1LmAfuxBy5myhJTe"/>
+</div>
+<div class="relative z-20 max-w-3xl space-y-6">
+<div class="flex items-center gap-3">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase border border-primary/30">Editors Pick</span>
+<span class="text-on-surface-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">groups</span> 4-Player Co-op
+                    </span>
+</div>
+<h1 class="text-6xl md:text-8xl font-black font-headline tracking-tighter text-on-surface leading-[0.9]">NEON SQUAD: OVERDRIVE</h1>
+<p class="text-lg text-on-surface-variant font-light leading-relaxed max-w-xl">
+                    Experience the most intense tactical extraction shooter of the decade. Coordinate with your squad in a neon-drenched dystopian city where every decision matters.
+                </p>
+<div class="flex flex-wrap items-center gap-4 pt-4">
+<button class="primary-gradient px-8 py-4 rounded-md text-on-primary font-bold font-headline tracking-tight flex items-center gap-2 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        Watch Trailer
+                    </button>
+<button class="bg-surface-container-highest px-8 py-4 rounded-md text-on-surface font-bold font-headline tracking-tight hover:bg-surface-bright transition-colors border border-outline-variant/10">
+                        View Details
+                    </button>
+</div>
+</div>
+</section>
+<!-- Trending Multiplayer Row -->
+<section class="py-12 px-8 md:px-16 lg:px-24">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-3xl font-extrabold font-headline tracking-tight text-on-surface">Trending Multiplayer</h2>
+<p class="text-on-surface-variant text-sm mt-1">What the community is playing right now.</p>
+</div>
+<a class="text-primary text-sm font-semibold hover:underline flex items-center gap-1" href="#">
+                    Explore All <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+</a>
+</div>
+<div class="flex gap-6 overflow-x-auto no-scrollbar pb-8">
+<!-- Card 1 -->
+<div class="min-w-[280px] md:min-w-[320px] group cursor-pointer">
+<div class="aspect-[16/9] rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Game Poster 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="vibrant digital art of a high-fantasy battlefield with wizards and warriors clashing under a purple lightning storm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQCSosGGv7qR7J3ub11YVkXXypSyczIGm0J7TaDngvu3fJfoLAet2faDkL7Z-udmpDcq94vO7glnkMWtYJF8LAnYK9szy4iLhqHR6ZwSm_sICTj5HhiBaunkQydEfOobUOuOl7l3C0t1_TGXxibFkX3aYGglDLmUEIxheJgBRQWDUZiUIgkJda1_6hAkj1IjwafIogqeUt5XNBc4KoRKjZZzdfH89ksMkZeBLs6QPtgyzP-_xMrCuDYSPMiPPHCgXVSY25GzfS3XHb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<span class="text-primary text-xs font-bold">Great for a weekend session</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-surface font-headline">Aether Legends</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">RPG</span>
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">PvP</span>
+</div>
+</div>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.8</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[280px] md:min-w-[320px] group cursor-pointer">
+<div class="aspect-[16/9] rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Game Poster 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="atmospheric shot of a dark gothic hallway with flickering torches and a shadow of a knight in full plate armor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfY-HTy6GHNMG0pGUBRh49XtHhF1DzKREYQDmNgvXqLG9NYD6FhP6GzUS6Pf5NHQthkzMQY9s-8CeD6fPHvlrcTZ8FXeEFh53fJnqm4Wg5il6dUliWOupRoJ_f5NES0Hv567x6-4_SgQm2G3m5L83p-h9obtF9mrMkKbashS2PBUiRG2zQfm_7mIyWy87-AwbwdDlRVJblaTSAwukp-SO1JE87HyLUdmBBvh-jlWJUHl0p6YNZefKGtfNknAQYehWCMefQU9Y8T0Sl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<span class="text-primary text-xs font-bold">Hardcore Challenge</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-surface font-headline">Void Walker</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">Souls-like</span>
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">Co-op</span>
+</div>
+</div>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.6</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[280px] md:min-w-[320px] group cursor-pointer">
+<div class="aspect-[16/9] rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Game Poster 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="overhead view of a futuristic tech-filled room with multiple glowing monitors and retro gaming hardware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBynheZ-MNLsz7AmV7NhnJvGZTtHUb4xgfQ3jAEEkkvpoj3eoYhttB2st7_2G0jkeYaAD4rRQ-DXjw2AW1CNX8RT5yTDDWG4sCHtUSIV1GSZwEHO-_SNPt_XtJTvVsnEjVFsVBw8-nJ79H2o3WNierlpI5gK-w2cgllIP0fcze2q8TnfTiDyIuAJkvynIJ6ttaveLTr7lZ700cW7O0XPi0hosl4E07vtOPPfh0DZL8YphQRliegAx1rAd9FlA2UU_eVCqxkg2YgW3nA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<span class="text-primary text-xs font-bold">Endless Replayability</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-surface font-headline">Silicon Dreams</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">Simulation</span>
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">Indie</span>
+</div>
+</div>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.9</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="min-w-[280px] md:min-w-[320px] group cursor-pointer">
+<div class="aspect-[16/9] rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Game Poster 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="mystical forest landscape at night with glowing blue flora and a large moon in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq2IkMtNCb8qP6Pf5rdaz_srofAwgGYEKgD5XwvzXKQWKRYxGZrO8l6LK2oXt8FzYC0_zMiIoe__sXaSeUBUE--Uxzte75-DIiQV9GObhu3UXEZag6kwtw0jqUQbRU4W4XU0Wdf5Bj9Nnx44sG7BfT3aexXyMvIi9lR91kz_2DmK8_TICsy1ZFH9raoRgiF2_SM2vbCsm-MDNSTauQjQMgmCwMCtS77fdehp6s0uk2MZQ-rpoXGSypzOxtlqFBb6g52p8NN_3-EWpE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<span class="text-primary text-xs font-bold">Atmospheric Masterpiece</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-start">
+<div>
+<h3 class="font-bold text-on-surface font-headline">Lunar Path</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">Adventure</span>
+<span class="text-[10px] text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded uppercase font-semibold">Story</span>
+</div>
+</div>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.5</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Best for 4+ Players (Bento Grid Style) -->
+<section class="py-12 px-8 md:px-16 lg:px-24">
+<h2 class="text-3xl font-extrabold font-headline tracking-tight text-on-surface mb-8">Best for 4+ Players</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+<!-- Large Highlight -->
+<div class="md:col-span-2 md:row-span-2 bg-surface-container rounded-xl overflow-hidden group cursor-pointer relative">
+<img alt="Bento Feature" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="dynamic concept art of four futuristic explorers standing on the edge of a massive canyon looking at a sci-fi city in the distance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDevUQG4s1Feajci-B6DHKyge06k0Nb2Z7d16oHrpu8AVaTvkYmZSZs3uBpcH8CG_LoXYesReVU2HpxrygP3N3gPOOFPMn5TtX2Tl_cFMQWuYVb5kiIGQ9u4666ZeGX2grSK_cwCZ7Cyj9laKEzQuU3sEby0eP6E01tM94VHaS0koesVcsOdeOtQBJNqrmmIFMa37o6iu4D5QFFEtuCts2yxTgpuO3_0eWaWjrflYRfmy4AwNcGUQGJMYmZoDEZdq_p1KMldo3g_I-J"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent flex flex-col justify-end p-8">
+<span class="text-primary font-bold text-xs uppercase tracking-widest mb-2">Editor's Choice</span>
+<h3 class="text-4xl font-black font-headline tracking-tighter text-on-surface leading-tight">GALAXY RAIDER: FRONTIERS</h3>
+<p class="text-on-surface-variant mt-2 max-w-sm line-clamp-2">The ultimate cooperative sandbox space odyssey. Build, defend, and explore the stars with your entire friend group.</p>
+<div class="mt-4 flex items-center gap-4">
+<span class="flex items-center gap-1 text-xs text-on-surface bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm">groups</span> 2-16 Players
+                            </span>
+<span class="flex items-center gap-1 text-xs text-on-surface bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">recommend</span> 98% Positive
+                            </span>
+</div>
+</div>
+</div>
+<!-- Small Grid Items -->
+<div class="md:col-span-2 bg-surface-container rounded-xl p-6 flex items-center gap-6 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Grid Item 1" class="w-full h-full object-cover" data-alt="close-up of colorful polyhedral dice on a velvet gaming table for tabletop rpg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhTNEudr57IMAj0kucZn2qiqK618babYiK_qUGJjHa5vgDDCC6a01jyBIdZikEHAWpzZkuRARAt7Euwjv5WjttNB15q1ohhWHprMqiv6MIh4y7V4ePEshVdgAzrrWgpMapNTlnHWHN2SUCkoSkVdZtb1o1_wDQ3AJt7KiBpvVecu_6El1FtqakmZprtjYW1z6Ri9whaLufUeEwman7I5JDLSGUWc9fFEX4XQHKlsiySWvIl2ozLi5ZXqyCa4syMmK9trbnSUSKk-uH"/>
+</div>
+<div>
+<span class="text-primary-container font-bold text-[10px] uppercase">Highly Recommended</span>
+<h4 class="font-headline font-bold text-xl text-on-surface">Dungeon Keepers III</h4>
+<p class="text-on-surface-variant text-sm mt-1 line-clamp-1">Classic co-op strategy redefined for modern hardware.</p>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 flex flex-col justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface">Ocean Breach</h4>
+<p class="text-on-surface-variant text-xs mt-1">Deep sea survival horror for brave squads.</p>
+</div>
+<div class="flex items-center justify-between mt-4">
+<span class="text-primary text-xs font-bold">New Content</span>
+<span class="material-symbols-outlined text-on-surface-variant">arrow_forward</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 flex flex-col justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface">Speed Runners 2</h4>
+<p class="text-on-surface-variant text-xs mt-1">Pure chaotic competitive fun with friends.</p>
+</div>
+<div class="flex items-center justify-between mt-4">
+<span class="text-primary text-xs font-bold">Local Co-op</span>
+<span class="material-symbols-outlined text-on-surface-variant">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Favorites: Review Focus -->
+<section class="py-12 px-8 md:px-16 lg:px-24 mb-20">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+<div>
+<h2 class="text-3xl font-extrabold font-headline tracking-tight text-on-surface">Community Favorites</h2>
+<p class="text-on-surface-variant text-sm mt-1">The games people can't stop talking about.</p>
+</div>
+<div class="flex bg-surface-container rounded-full p-1 border border-outline-variant/10">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary text-xs font-bold">Recent</button>
+<button class="px-6 py-2 rounded-full text-on-surface-variant text-xs font-bold hover:text-on-surface">All Time</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Review Card 1 -->
+<div class="bg-surface-container rounded-xl p-8 border-l-4 border-primary/40 relative group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Reviewer" data-alt="professional portrait of a man with short hair and a beard smiling subtly at the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnj6M7R85Fl5y5vNp95xbfPwmNkmGuiE3rQQF3ndFtVJQSEJnG8ztBNnDSRXon1PISHn6IPSIdS2QDl8TFK5AJX_Z9wShtJQ-fqXlSV3X3oM0a29rXEaHYNe7RH4KzWk7va2l_zVQwOsjUgjxc6v9uWBYHf3lWjNTM_EzsHWx-Rz61f76xQ-uxsB7HbF1nstnpkPd5dl4ic48qMvxgq4IVU5ebt7roFz8pwdWJyFzVOr0-GE5wxnaAVK8-fDwoXcCxEiTmePM_akxy"/>
+</div>
+<div>
+<p class="text-on-surface font-bold text-sm">Alex_Gamer24</p>
+<p class="text-on-surface-variant text-[10px]">Reviewed: Starlight Odyssey</p>
+</div>
+</div>
+<p class="text-on-surface font-light italic leading-relaxed mb-6">"Hands down the best co-op experience I've had in years. The way the mechanics force you to communicate without being frustrating is a masterclass in game design."</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<div class="flex text-primary gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-widest">1.2k Helpful</span>
+</div>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-surface-container rounded-xl p-8 border-l-4 border-primary/40 relative group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Reviewer" data-alt="close-up portrait of a woman with long hair and a natural smile looking away from the camera in soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3rAfWEqEEtvl1qh15XMa_vsGmcUHykCbF19Y9lurm_tSmqdshWGcLmEaoJIK8UND81_d9NLIP3H7RzVeiS_8mpacyc3YfV0zbqMH4jYWp0LhlroTJBryCa-e3TVheDwVyVndMNZXI6_BhAFqdQuoFASHz1w0g0s8AZOdj-HKcak_cFJk-Od0CXtlFRbWzRyTlmMk913y7LA9ALmLYTixV6LOjsX6vERhTUU9rUnoFnjzurfEO3KgOlwbkOi6psvmfkq20fjvVP85-"/>
+</div>
+<div>
+<p class="text-on-surface font-bold text-sm">SarahPixel</p>
+<p class="text-on-surface-variant text-[10px]">Reviewed: Neon Squad</p>
+</div>
+</div>
+<p class="text-on-surface font-light italic leading-relaxed mb-6">"The atmosphere in this game is incredible. It's rare to find a multiplayer game that feels this immersive. Great for those who love deep lore and tactical play."</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<div class="flex text-primary gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star_half</span>
+</div>
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-widest">840 Helpful</span>
+</div>
+</div>
+<!-- Review Card 3 -->
+<div class="bg-surface-container rounded-xl p-8 border-l-4 border-primary/40 relative group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Reviewer" data-alt="portrait of a man with glasses and a friendly expression in a casual setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6QurUDCUst5ErNsnOGaGxEFbBNI61LDiBZ5zkDy5bSozPJCH7pHnceOGWSsnle4FC4utEQzRQvE-eQ02bphGSaOyZGbnOaTfeAOWH4noSoiNl1q-PTWMDMLZBEfHdVwC40rxKL5jFdV8KR7VoY7SzChHXmKLBwKH8gY91RO5FhEc30q9u9HfxyvjkRe4wXPYEdGE3USSR3qSro3_8AawPo-oHJujwfO22Ky01fhPI8_3mUTaTNyhDZLxaVU6eoiKsP8GZ2mmUvF3o"/>
+</div>
+<div>
+<p class="text-on-surface font-bold text-sm">Devin_W</p>
+<p class="text-on-surface-variant text-[10px]">Reviewed: Forge Masters</p>
+</div>
+</div>
+<p class="text-on-surface font-light italic leading-relaxed mb-6">"Finally, a crafting game that doesn't feel like a chore! Playing this with three friends is pure joy. Highly recommend for casual weekend gaming sessions."</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<div class="flex text-primary gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-widest">2.1k Helpful</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0b0e15] dark:bg-[#0b0e15] border-t border-[#161a22] mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 gap-6 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-4">
+<span class="text-lg font-bold text-[#eff0fa] font-headline">Digital Curator</span>
+<p class="font-['Inter'] text-xs text-[#a9abb4] max-w-xs">Your premier destination for discovering world-class gaming experiences curated by the community.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">About Us</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Support</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Careers</a>
+</div>
+<div class="flex flex-col items-end gap-4">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#a9abb4] hover:text-[#71caff] cursor-pointer">share</span>
+<span class="material-symbols-outlined text-[#a9abb4] hover:text-[#71caff] cursor-pointer">public</span>
+<span class="material-symbols-outlined text-[#a9abb4] hover:text-[#71caff] cursor-pointer">mail</span>
+</div>
+<p class="font-['Inter'] text-xs text-[#a9abb4]">© 2024 Digital Curator. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

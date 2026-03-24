@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@300..700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed": "#22500a",
+            "on-error": "#490006",
+            "on-surface": "#eff0fa",
+            "on-secondary-fixed": "#1f3d53",
+            "surface-dim": "#0b0e15",
+            "secondary-fixed-dim": "#b2cfeb",
+            "surface-container-high": "#1c2029",
+            "surface-container-highest": "#212630",
+            "surface-container-lowest": "#000000",
+            "on-secondary": "#334f67",
+            "secondary-fixed": "#c0ddfa",
+            "surface-container-low": "#10131b",
+            "on-background": "#eff0fa",
+            "surface-tint": "#71caff",
+            "on-primary": "#00415c",
+            "tertiary-dim": "#b7ef97",
+            "inverse-primary": "#00668e",
+            "surface-container": "#161a22",
+            "tertiary": "#eeffde",
+            "on-primary-container": "#002638",
+            "tertiary-fixed-dim": "#b7ef97",
+            "primary-dim": "#62bdf0",
+            "tertiary-container": "#c2fba1",
+            "tertiary-fixed": "#c5fea4",
+            "primary": "#71caff",
+            "on-tertiary": "#3b6a23",
+            "primary-fixed": "#71caff",
+            "primary-fixed-dim": "#62bdf0",
+            "secondary": "#c0ddfa",
+            "on-error-container": "#ffa8a3",
+            "error-dim": "#d7383b",
+            "on-surface-variant": "#a9abb4",
+            "background": "#0b0e15",
+            "surface-bright": "#272c37",
+            "on-primary-fixed": "#002b3f",
+            "secondary-container": "#2d4a61",
+            "surface-variant": "#212630",
+            "surface": "#0b0e15",
+            "on-tertiary-container": "#32621b",
+            "error-container": "#9f0519",
+            "on-secondary-fixed-variant": "#3c5971",
+            "outline-variant": "#454850",
+            "outline": "#73757e",
+            "primary-container": "#4daadc",
+            "error": "#ff716c",
+            "on-primary-fixed-variant": "#004b69",
+            "inverse-on-surface": "#52555d",
+            "inverse-surface": "#f9f9ff",
+            "secondary-dim": "#b2cfeb",
+            "on-tertiary-fixed-variant": "#3e6e26",
+            "on-secondary-container": "#b6d4f0"
+          },
+          fontFamily: {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+    }
+    .glass-panel {
+      background: rgba(33, 38, 48, 0.6);
+      backdrop-filter: blur(20px);
+    }
+    .hero-gradient {
+      background: linear-gradient(to bottom, transparent 0%, #0b0e15 100%);
+    }
+    .cta-gradient {
+      background: linear-gradient(135deg, #71caff 0%, #4daadc 100%);
+    }
+    body {
+      background-color: #0b0e15;
+      color: #eff0fa;
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3 {
+      font-family: 'Manrope', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-[#0b0e15] docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black tracking-tighter text-[#eff0fa]">Digital Curator</span>
+<nav class="hidden md:flex gap-8 items-center font-['Manrope'] tracking-tight text-sm font-medium">
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Home</a>
+<a class="text-[#71caff] border-b-2 border-[#71caff] pb-1 font-bold" href="#">Browse</a>
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Community</a>
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Blog</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-[#a9abb4] hover:bg-[#272c37] p-2 rounded-full transition-all duration-200 ease-out scale-95 active:scale-90" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-[#a9abb4] hover:bg-[#272c37] p-2 rounded-full transition-all duration-200 ease-out scale-95 active:scale-90" data-icon="shopping_cart">shopping_cart</button>
+</div>
+<img alt="User profile and settings" class="w-9 h-9 rounded-full object-cover ring-2 ring-surface-container" data-alt="Close-up portrait of a stylish person with soft cinematic lighting and bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkx7Iwyxwf8jydXPw1l_T2xPBrmQbqf0UK3QWSBgurfQ2ct_9cFjEpiX33J7_Hk59JFJGvN188szWp7hYPwOGB12_uJjdkMhAe5SnT0Ca9xtKi06HA7okH_UUJ8S7LqMW_ecnuW-qyhGka6I-9n9TTd2SzdoVRnvlGrJhVdLQJGwT-Jfr-MX26j00j9FUeaxzDSofcqLyA1a3hzWLeKP8-nd8bDcYLKhDwmVDnHyJHPoTzR2JkLRb53CxdPAb8pskexIyweu0opuSI"/>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative h-[870px] w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Cinematic wide shot of a futuristic cyberpunk city with neon lights reflecting in puddles at night under a purple haze" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUBaT5USMPSp8F0aGBZ832JlXEMFFR_sUclEpNfY-4mp39EHdwW5gVuj1Iko9kdaTDYYAUYt8uZ_Ofh6uoSkgfbDKDvlf3PYII0Ii6WFacIiLw2tLTi43x0TWtz6-hFo7v0FGh__Bryt1-hTasAdNEiLbpvdlF445C9_XJP0IvqMu8Krpr__KE3Er9vz3mckXYmi8fgfXBh4AubuCJL0H3y-8QhsEPvG9BotAtS1_5PqN0czVvdd83DsemQ7JxF2qqv2FQG6fOVguE');"></div>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="relative h-full max-w-screen-2xl mx-auto px-8 flex flex-col justify-end pb-16">
+<div class="flex flex-wrap gap-3 mb-6">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">3+ Players Recommended</span>
+<span class="bg-surface-bright/50 backdrop-blur-md text-on-surface px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Co-op Adventure</span>
+</div>
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-4 leading-none">NEON ALLIANCE</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg mb-8 font-light leading-relaxed">Assemble your squad in the definitive tactical co-op experience. Navigate the underbelly of New Aetheria where every decision demands synchronization and precision.</p>
+<div class="flex flex-wrap gap-4">
+<button class="cta-gradient text-on-primary font-bold px-10 py-4 rounded-xl flex items-center gap-3 scale-100 hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+            Get Started
+          </button>
+<button class="bg-surface-container-highest text-on-surface font-bold px-10 py-4 rounded-xl flex items-center gap-3 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            Add to Library
+          </button>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="max-w-screen-2xl mx-auto px-8 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Discovery & Media -->
+<div class="lg:col-span-8 space-y-20">
+<!-- Social Gameplay Clips -->
+<section>
+<h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+<span class="text-primary material-symbols-outlined" data-icon="videocam">videocam</span>
+            Social Moments
+          </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="group relative aspect-video rounded-xl overflow-hidden bg-surface-container shadow-2xl">
+<img alt="Gameplay clip 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Action-packed scene of four players flanking a boss in a neon-lit arena with blue and pink energy trails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy9GsorLK1jn0QaCEainIdrPAWaQTLfZBDyKHfWPQeafqRF2vxG6ad9x7zn9fs07NNsjsRWq1PA5oBpEU5HDouclhgXK97SrnHCSLpPMpWb65a9nipdg5Zk40N9TS9Qm_rl-SWDolFXpDWH67ntRdVb4ofKvmxBjFvPIwI-zXpW8o6rI52mOHeWlzoXCxEhdKgfNSrANTF0UQyyDkTXs4ZAqv4cFzuSz4R2F_DTXbZUst8IYa_fPU5WukoawpfwMG8DIY6yR5rlXFm"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-6xl" data-icon="play_circle">play_circle</span>
+</div>
+<div class="absolute bottom-4 left-4">
+<p class="text-sm font-bold bg-black/60 backdrop-blur-sm px-2 py-1 rounded">Sync Kill Achievement</p>
+</div>
+</div>
+<div class="group relative aspect-video rounded-xl overflow-hidden bg-surface-container shadow-2xl">
+<img alt="Gameplay clip 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Detailed view of a team's inventory and crafting station in a high-tech lab with floating holographic UI elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfTt9GeVPKf48CtjBfjZsxUH4_JP3be4UUBdg74m-pr8ZBlCozp-Bh-lJXylDVthb1cz83Bc5L2GMZkw8ZZmhHZSWkTcq71SyueSCQ6HCp77LdvfmY8InjZ3s-eGyEyoTpt334f8JsJaaRdb3VEzv8XnQoxH29Fl9edcLS4iR8Pzy8x0XzASUpyIcga-33t1QYGA8WbICKKjNqVRNA0XyCmMZhV7OCg1P8S-ulY2U1aTn_b9L5RuTu2pAkx43GyEpuJ81sg1CPA6bB"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-6xl" data-icon="play_circle">play_circle</span>
+</div>
+<div class="absolute bottom-4 left-4">
+<p class="text-sm font-bold bg-black/60 backdrop-blur-sm px-2 py-1 rounded">Base Customization</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Reasons to Play Together (Bento Style) -->
+<section>
+<h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+<span class="text-primary material-symbols-outlined" data-icon="groups">groups</span>
+            Why Play Together?
+          </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-4 h-[500px]">
+<div class="md:col-span-2 bg-surface-container rounded-xl p-8 flex flex-col justify-end relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-primary text-6xl opacity-20" data-icon="handshake">handshake</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">Deep Teamwork</h3>
+<p class="text-on-surface-variant">Coordinate special abilities that trigger massive combo effects. Success isn't about solo skill, it's about the unit.</p>
+</div>
+<div class="bg-surface-bright rounded-xl p-8 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4" data-icon="speed">speed</span>
+<h3 class="text-xl font-bold mb-2">Easy Entry</h3>
+<p class="text-sm text-on-surface-variant">Jump-in mechanics allow friends to join mid-session without level penalties.</p>
+</div>
+<div class="bg-secondary-container rounded-xl p-8 flex items-center gap-6">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container" data-icon="forum">forum</span>
+<div>
+<h3 class="text-xl font-bold">Integrated Comms</h3>
+<p class="text-xs text-on-secondary-container/80">Spatial audio and smart-ping systems.</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-surface-container-high rounded-xl p-8 flex flex-col justify-center">
+<div class="flex gap-4 mb-4">
+<span class="px-3 py-1 bg-surface-container rounded-full text-xs font-mono">MODULAR_LOOT</span>
+<span class="px-3 py-1 bg-surface-container rounded-full text-xs font-mono">SHARED_XP</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">Shared Progression</h3>
+<p class="text-on-surface-variant">Every victory rewards the whole group equally. No more fighting over the best drops.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Community & Social Stats -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Recommended Badge Card -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="thumb_up" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-bold">Curator Rating</p>
+<p class="text-xl font-black">ESSENTIAL PLAY</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Team Synergy</span>
+<span class="text-primary font-bold">9.8/10</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-[98%]"></div>
+</div>
+<div class="flex justify-between text-sm pt-2">
+<span class="text-on-surface-variant">Replayability</span>
+<span class="text-primary font-bold">9.2/10</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-[92%]"></div>
+</div>
+</div>
+</div>
+<!-- Community Recommendations -->
+<section>
+<h3 class="text-xl font-bold mb-6">Community Highlights</h3>
+<div class="space-y-4">
+<div class="glass-panel p-5 rounded-xl">
+<div class="flex items-center gap-3 mb-3">
+<img alt="User 1" class="w-8 h-8 rounded-full" data-alt="Portrait of a gamer with vibrant lighting, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc1JFjAlt2RGwPtXQQfKaZR7gc7ivvrjV2ZN31VySCSei-oDQMloGMI4_taF4DvQIFRpGJBhJdDcLxzl6elsgUoSqXQnavftzHX_mHjvkwePTWIVkQi9BDDvSlg9qaSxzCFavUNckZ2r2OX5QsKvXs0UCm6Go-A0eqxwk6gUyXDpceQXiCePROOckzBJXMQmmy_hy6bp4BzociQeyT1rmaYgKhGZgAKJdDW_1KevBlDC4h70AGbhoWhTtdHGRYXdeHNDXez2MfSC-k"/>
+<span class="text-sm font-bold">Apex_Hunter</span>
+<span class="ml-auto text-xs text-on-surface-variant">2d ago</span>
+</div>
+<p class="text-sm text-on-surface-variant italic">"Best co-op mechanics since Portal 2. The boss fights actually require everyone to be on their toes."</p>
+</div>
+<div class="glass-panel p-5 rounded-xl">
+<div class="flex items-center gap-3 mb-3">
+<img alt="User 2" class="w-8 h-8 rounded-full" data-alt="Close up of a smiling woman with cinematic dramatic light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKBx1bcB3NI_gZqNI2Fvz2elliuEGE_yH97V503EkQA2DewifS04QAUcybhV-sB-6QgyCZbR6MTtKrMO3dnvGigcaLOncMGOJmR3o4uCX8JvVw2ica_6cwEcFqWRR579i83LHsJo_-yqGtnmBxWezdETJ3Rb96k91k1IY9apBQlbkWPtAjSGQWfaygCpfwFskIzy2KsjwQBmAmZ5Sac-rHj34fRzQRfNWI_32hiFH9MCNWGhJ7swWMpL5s8L5PBVwFKLEgPbeaDR2D"/>
+<span class="text-sm font-bold">CyberVixen</span>
+<span class="ml-auto text-xs text-on-surface-variant">4d ago</span>
+</div>
+<p class="text-sm text-on-surface-variant italic">"The social hub is actually fun to hang out in between missions. 10/10 vibes."</p>
+</div>
+</div>
+<button class="w-full mt-4 py-3 text-sm font-bold text-primary hover:bg-primary/10 rounded-lg transition-colors">View all 1,420 reviews</button>
+</section>
+<!-- Technical Specs / Badges -->
+<section class="bg-surface-container rounded-xl p-6">
+<h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-4">Features</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high border border-outline-variant/20 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="cloud_done">cloud_done</span> Cloud Saves
+            </span>
+<span class="bg-surface-container-high border border-outline-variant/20 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="devices">devices</span> Cross-Play
+            </span>
+<span class="bg-surface-container-high border border-outline-variant/20 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="headphones">headphones</span> Discord Integrated
+            </span>
+<span class="bg-surface-container-high border border-outline-variant/20 px-3 py-1.5 rounded-lg text-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="sports_esports">sports_esports</span> Full Controller Support
+            </span>
+</div>
+</section>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0b0e15] w-full border-t border-[#161a22] mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 gap-6 max-w-screen-2xl mx-auto">
+<div>
+<span class="text-lg font-bold text-[#eff0fa]">Digital Curator</span>
+<p class="font-['Inter'] text-xs text-[#a9abb4] mt-2">© 2024 Digital Curator. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">About Us</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Support</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Careers</a>
+</div>
+</div>
+</footer>
+</body></html>

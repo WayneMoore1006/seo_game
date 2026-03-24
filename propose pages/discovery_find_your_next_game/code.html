@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Curator | Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#22500a",
+              "on-error": "#490006",
+              "on-surface": "#eff0fa",
+              "on-secondary-fixed": "#1f3d53",
+              "surface-dim": "#0b0e15",
+              "secondary-fixed-dim": "#b2cfeb",
+              "surface-container-high": "#1c2029",
+              "surface-container-highest": "#212630",
+              "surface-container-lowest": "#000000",
+              "on-secondary": "#334f67",
+              "secondary-fixed": "#c0ddfa",
+              "surface-container-low": "#10131b",
+              "on-background": "#eff0fa",
+              "surface-tint": "#71caff",
+              "on-primary": "#00415c",
+              "tertiary-dim": "#b7ef97",
+              "inverse-primary": "#00668e",
+              "surface-container": "#161a22",
+              "tertiary": "#eeffde",
+              "on-primary-container": "#002638",
+              "tertiary-fixed-dim": "#b7ef97",
+              "primary-dim": "#62bdf0",
+              "tertiary-container": "#c2fba1",
+              "tertiary-fixed": "#c5fea4",
+              "primary": "#71caff",
+              "on-tertiary": "#3b6a23",
+              "primary-fixed": "#71caff",
+              "primary-fixed-dim": "#62bdf0",
+              "secondary": "#c0ddfa",
+              "on-error-container": "#ffa8a3",
+              "error-dim": "#d7383b",
+              "on-surface-variant": "#a9abb4",
+              "background": "#0b0e15",
+              "surface-bright": "#272c37",
+              "on-primary-fixed": "#002b3f",
+              "secondary-container": "#2d4a61",
+              "surface-variant": "#212630",
+              "surface": "#0b0e15",
+              "on-tertiary-container": "#32621b",
+              "error-container": "#9f0519",
+              "on-secondary-fixed-variant": "#3c5971",
+              "outline-variant": "#454850",
+              "outline": "#73757e",
+              "primary-container": "#4daadc",
+              "error": "#ff716c",
+              "on-primary-fixed-variant": "#004b69",
+              "inverse-on-surface": "#52555d",
+              "inverse-surface": "#f9f9ff",
+              "secondary-dim": "#b2cfeb",
+              "on-tertiary-fixed-variant": "#3e6e26",
+              "on-secondary-container": "#b6d4f0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-overlay {
+            background: rgba(33, 38, 48, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #71caff 0%, #4daadc 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<header class="bg-[#0b0e15] docked full-width top-0 z-50">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black tracking-tighter text-[#eff0fa] font-headline">Digital Curator</span>
+<div class="hidden md:flex items-center gap-8 font-['Manrope'] tracking-tight text-sm font-medium">
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Home</a>
+<a class="text-[#71caff] border-b-2 border-[#71caff] pb-1 font-bold" href="#">Browse</a>
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Community</a>
+<a class="text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-lowest border-none rounded-full py-2 pl-10 pr-4 text-xs w-64 focus:ring-1 focus:ring-primary outline-none" placeholder="Search curated titles..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#272c37] transition-all duration-200 ease-out p-2 rounded-full scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[#71caff]">notifications</span>
+</button>
+<button class="hover:bg-[#272c37] transition-all duration-200 ease-out p-2 rounded-full scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[#71caff]">shopping_cart</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden border border-outline-variant/20 cursor-pointer">
+<img alt="User profile" data-alt="close-up portrait of a stylish person with professional studio lighting and clean minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjadRXF3EUFhpwspwDBtdeSBUxhltev45ewlaNI-ikgc4TozwX11M-My_DifQz2aqqDqAu84ES4wv0B1-8aWMgxbVfZ0Agv8mh1FIWn87sTS9m-A4HtauXFLLwmIFI-MtjNeadKC6JZJzkAj-XpgIgrrt0fPSapwYfUFXgV14IAmMPXoqBJpffOxcYVFUUGiGXw5PZIqCx6lMQLbJQJS3pMwObh_JXLa25b8L6Fmefegr1kqwqwgbK2IU0AWr7lHM5LWKWFcpdVXlJ"/>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="max-w-screen-2xl mx-auto px-8 pt-12 pb-24 flex gap-10">
+<!-- Sidebar Filter -->
+<aside class="w-72 flex-shrink-0 hidden xl:block">
+<div class="sticky top-24 space-y-10">
+<section>
+<h3 class="font-headline font-extrabold text-lg mb-6 tracking-tight text-on-surface">Discovery Filters</h3>
+<div class="space-y-8">
+<div>
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 block">Player Count</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-primary text-primary text-xs font-semibold">Solo</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant/20 text-on-surface-variant text-xs font-semibold hover:border-primary/50 transition-colors">2 Players</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant/20 text-on-surface-variant text-xs font-semibold hover:border-primary/50 transition-colors">3-4 Co-op</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant/20 text-on-surface-variant text-xs font-semibold hover:border-primary/50 transition-colors">Large Party</button>
+</div>
+</div>
+<div>
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 block">Game Length</label>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-5 h-5 rounded border border-outline-variant/30 flex items-center justify-center group-hover:border-primary transition-colors">
+<div class="w-3 h-3 bg-primary rounded-sm opacity-0"></div>
+</div>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Quick Sessions (&lt; 30m)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-5 h-5 rounded border border-primary flex items-center justify-center bg-primary/10">
+<div class="w-3 h-3 bg-primary rounded-sm opacity-100"></div>
+</div>
+<span class="text-sm text-on-surface">Standard Night (1-2h)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-5 h-5 rounded border border-outline-variant/30 flex items-center justify-center group-hover:border-primary transition-colors">
+<div class="w-3 h-3 bg-primary rounded-sm opacity-0"></div>
+</div>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Deep Dive (4h+)</span>
+</label>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/10">
+<button class="w-full primary-gradient text-on-primary font-bold py-3 rounded-xl scale-100 active:scale-95 transition-all shadow-lg shadow-primary/10">Apply Preferences</button>
+</div>
+</div>
+</section>
+<div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/5">
+<p class="text-xs text-on-surface-variant italic leading-relaxed">"We curate for the mood, not just the genre. Find your next shared memory here."</p>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="flex-grow space-y-20">
+<!-- Category Section: Co-op Adventures -->
+<section>
+<div class="flex justify-between items-end mb-10">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Teamwork Essential</span>
+<h2 class="text-4xl font-black font-headline tracking-tighter text-on-surface">Co-op Adventures</h2>
+</div>
+<a class="text-on-surface-variant hover:text-primary text-sm font-semibold flex items-center gap-2 transition-colors" href="#">
+                        Explore Category <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Game Card 1 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300">
+<div class="aspect-video w-full relative overflow-hidden">
+<img alt="Cyberpunk co-op game" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500" data-alt="cinematic action shot of two futuristic cyborg characters standing back-to-back in a neon-lit rain-soaked alleyway" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBguonxkd7nmuEOYeficbK1EmX_z794HWCLFH6thUTbDd9YohCFNk2aMvsTGZKSvCR0byddRXTous8hs4s1W5XXsRqsZBy_zFp23j6mSogA-ztHXYOPsN1YtlWoXfYgkCjJZMr2kZY8gsFIbFM3iQWNKGmeRHZW_jxB5einPFwkU34DZK9Zy1eQq0yqQt-TUBdxhAYyyRyEduzNIGT7YRyBYpBtTRBMiaz3EC6Oed0wAWRIjmWq7AaQ1MnX8r1aqmXuyIbfG0O8pt5F"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4 glass-overlay px-3 py-1 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">2-4 Players</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="w-12 h-12 rounded-full bg-primary/80 flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-on-primary">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-bold font-headline mb-3 text-on-surface">Neon Syndicate</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Infiltrate the high-rise servers of the global megacorps. Your team is your only lifeline in this high-octane heist.</p>
+<div class="bg-surface-container-low p-4 rounded-xl border-l-2 border-primary/30">
+<span class="text-[10px] font-black text-primary uppercase tracking-tighter mb-1 block">Why it's fun with friends</span>
+<p class="text-xs text-on-surface/80 italic">"The asymmetric hacking mechanics mean everyone has a unique role. No more 'following the leader'—you win together or fail alone."</p>
+</div>
+</div>
+</div>
+<!-- Game Card 2 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:scale-[1.02] transition-all duration-300">
+<div class="aspect-video w-full relative overflow-hidden">
+<img alt="Space exploration game" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500" data-alt="vibrant epic cosmic nebula with a small research spaceship drifting near a massive glowing purple star cluster" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu3CrOs97xRzDS_LNzpf2tGcWdkIzy6dIS69uEr6TenZ5SEqQfGC0NbBXWCLm7FDcKWxAInzhf64iDIqfSzM_IqL2UhiT46krEET5gfA0ftGU59nDBDtllQwEdOTSjpo3GsRnFE4mcdPyw-Zaey2mXE03i_uWPMp_21Kn_kqVoe17n5WyzVpEIEXTeR3pTrTucmHONlEE9gSF_2TNZIRASJA1Bqc5ks1S1jCRwUmpdsHZt5cQowbuCasafjMWo8gW0LveNZ7ZKLa-1"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4 glass-overlay px-3 py-1 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">1-6 Players</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-bold font-headline mb-3 text-on-surface">Void Mariners</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Manage a struggling starship through uncharted galaxies. Repair systems, manage fuel, and discover ancient alien relics.</p>
+<div class="bg-surface-container-low p-4 rounded-xl border-l-2 border-primary/30">
+<span class="text-[10px] font-black text-primary uppercase tracking-tighter mb-1 block">Why it's fun with friends</span>
+<p class="text-xs text-on-surface/80 italic">"Chaos management at its finest. Screaming at your friend to fix the oxygen while you pilot through an asteroid belt is peak bonding."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Section: Party Games (Bento Style) -->
+<section>
+<div class="flex justify-between items-end mb-10">
+<div>
+<span class="text-tertiary-dim font-bold tracking-widest text-xs uppercase mb-2 block">Chaos &amp; Laughter</span>
+<h2 class="text-4xl font-black font-headline tracking-tighter text-on-surface">Party Games</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento Box 1: Large -->
+<div class="md:col-span-2 group relative bg-surface-container rounded-xl overflow-hidden min-h-[400px]">
+<div class="absolute inset-0">
+<img alt="Funny party game" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="chaotic group of colorful stylized cartoon monsters tumbling over each other in a bright minimalist physics playground" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCznq2rYuCnhGo_k4cg0GPJb-StXdM7sRZYMaFtUknn9OrmIayoM-WJSW-k-H4kh2KoOH9lkwr3TreB0_b6NDhSFVMEwp7-hIUXZnbHegp9T23ky8tFCtXlpazZzLUZA8Mngw03yyk05_fBQMyldeTo55kHz7QbF7LkSql-XYsQ6xTHd1aioRsaeCQa96USymqMi4hK5cB2OajDgxitilCLBh3fZQMH0ITXPb-PlTqpbxQmdKi23UCOsof7KmZIp48FVtz5-JVr-Ikk"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10 w-full">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-black uppercase">Local &amp; Online</span>
+<span class="glass-overlay px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">8+ Players</span>
+</div>
+<h3 class="text-4xl font-black font-headline mb-4">Misfit Mayhem</h3>
+<p class="max-w-md text-on-surface-variant text-sm mb-6 leading-relaxed">The ultimate physics-based friendship destroyer. 50+ minigames designed to provoke maximum laughter and minimal strategy.</p>
+<div class="flex items-center gap-4">
+<button class="primary-gradient text-on-primary px-8 py-3 rounded-xl font-bold text-sm scale-100 active:scale-95 transition-all">Quick Start</button>
+<span class="text-xs font-semibold text-on-surface/60 italic">"Perfect for 'one last round' loops."</span>
+</div>
+</div>
+</div>
+<!-- Bento Box 2: Small -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden p-8 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-secondary-container">psychology</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">Liar's Deck</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">A social deduction card game where your voice is your only weapon. Deceive, bluff, and betray.</p>
+</div>
+<div class="pt-6 border-t border-outline-variant/10">
+<div class="flex items-center justify-between text-[10px] font-bold text-primary tracking-widest uppercase">
+<span>3-8 Players</span>
+<span>15 Min</span>
+</div>
+</div>
+</div>
+<!-- Bento Box 3: Small -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden p-8 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">draw</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">Doodle Duel</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">Collaborative art meets competitive guessing. The worse you draw, the funnier it gets.</p>
+</div>
+<div class="pt-6 border-t border-outline-variant/10">
+<div class="flex items-center justify-between text-[10px] font-bold text-primary tracking-widest uppercase">
+<span>2-12 Players</span>
+<span>20 Min</span>
+</div>
+</div>
+</div>
+<!-- Bento Box 4: Horizontal -->
+<div class="md:col-span-3 flex bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant/5">
+<div class="w-1/3 aspect-video md:aspect-auto">
+<img alt="VR Social" class="w-full h-full object-cover" data-alt="close-up of a high-tech virtual reality headset reflecting colorful digital world patterns on its visor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA7HWKS-zx4NslZ4bFGoSkpe9q_t1M_m1ESa48MoQc83vbS_fTusGm59iEgwP9l03whddoR32Pq2PMPN2hTYrk6SxJ7a_WlJLwXfOrksTKLSiqYFZeME6ONpR7B8wvqo2MJymoXFB9JmOyqcvnB-IQjAAK-JQDqUpt7YxxFhjRrO2tIVSe3rEyHtWKGW1BEVMlYHMp0vw1vigeN5I7JA5tAKyDq5Jp9z30sO0GmvO95bbJ24Z8kSh3O-8EMbSVLXj8VRy5WSiEDlBc"/>
+</div>
+<div class="flex-grow p-10 flex flex-col justify-center">
+<span class="text-primary font-black text-[10px] uppercase tracking-[0.2em] mb-3">Featured Tech</span>
+<h3 class="text-3xl font-black font-headline mb-4">Social VR: The New Front Door</h3>
+<p class="text-on-surface-variant text-sm max-w-2xl leading-relaxed mb-6">Forget Discord. We've curated three VR spaces where presence is everything. Experience table-top games in a shared digital chalet.</p>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-surface-container rounded-lg text-xs font-semibold border border-outline-variant/20">Spatial Audio</div>
+<div class="px-4 py-2 bg-surface-container rounded-lg text-xs font-semibold border border-outline-variant/20">Full Body Tracking</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0b0e15] w-full border-t border-[#161a22] mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 gap-6 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-2">
+<span class="text-lg font-bold text-[#eff0fa] font-headline">Digital Curator</span>
+<p class="font-['Inter'] text-xs text-[#a9abb4]">© 2024 Digital Curator. All rights reserved.</p>
+</div>
+<div class="flex gap-10">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Platform</span>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">About Us</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Support</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Legal</span>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs text-[#a9abb4] hover:text-[#eff0fa] transition-colors duration-200" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center opacity-80 hover:opacity-100 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center opacity-80 hover:opacity-100 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</button>
+</div>
+</div>
+</footer>
+</body></html>
