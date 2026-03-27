@@ -1,15 +1,7 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { NAV_LINKS } from '../constants';
-
-/**
- * @component TopNavBar
- * @description 全站共用的頂層導覽列。
- * 提供站內路由切換、全域搜尋（導向 Browse 頁面），以及購物車等使用者互動功能。
- */
+import { Link } from 'react-router-dom';
 export const TopNavBar: React.FC = () => {
-  const location = useLocation();
+
 
   return (
     <nav className="bg-[#0b0e15] dark:bg-[#0b0e15] fixed top-0 z-50 w-full mb-20 bg-opacity-95 backdrop-blur-sm">

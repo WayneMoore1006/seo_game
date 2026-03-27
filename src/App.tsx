@@ -4,11 +4,13 @@ import { Toaster } from 'react-hot-toast';
 import { TopNavBar } from './components/TopNavBar';
 import { Blog } from './pages/Blog';
 import { ArticleDetail } from './pages/ArticleDetail';
+import { GoogleAnalytics } from './components/GoogleAnalytics';
 import { Footer } from './components/Footer';
 
 export default function App() {
   return (
     <HashRouter>
+      <GoogleAnalytics />
       <div className="min-h-screen flex flex-col">
         <Toaster position="bottom-right" toastOptions={{
           style: {

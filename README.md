@@ -3,7 +3,7 @@
 Welcome to the **Game Discovery Hub**! This is a modern, React-based web application built with **Vite** and styled with **Tailwind CSS v4**. It features a stunning interface to browse game recommendations, dynamic community blog posts from Threads, and detailed game overviews.
 
 ## 🚀 Live Demo
-[Check out the live website on GitHub Pages!](https://hsuan619.github.io/seo_game/)
+[Check out the live website on GitHub Pages!](https://hsuan619.github.io/steam-best-games/)
 
 ---
 

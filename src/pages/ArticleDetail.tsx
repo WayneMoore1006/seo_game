@@ -7,7 +7,7 @@ import { SteamLiveFloatingWidget } from '../components/SteamLiveFloatingWidget';
 
 export const ArticleDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const article = articles.find(a => a.id === id) || articles[0]; // fallback to first article if not found
+  const article = articles.find(a => a.id === id);
 
   // Scroll to top on load
   useEffect(() => {
@@ -17,8 +17,8 @@ export const ArticleDetail: React.FC = () => {
   if (!article) {
     return (
       <main className="max-w-screen-xl mx-auto px-8 py-32 text-center text-on-surface">
-        <h1 className="text-4xl font-bold mb-4 font-headline">Article Not Found</h1>
-        <Link to="/blog" className="text-primary hover:underline font-bold">Return to Blog</Link>
+        <h1 className="text-4xl font-bold mb-4 font-headline">找不到該主題文章</h1>
+        <Link to="/" className="text-primary hover:underline font-bold">返回首頁</Link>
       </main>
     );
   }
@@ -28,7 +28,7 @@ export const ArticleDetail: React.FC = () => {
       {/* Article Header */}
       <header className="mb-12 max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
-          <Link to="/blog" className="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline">{article.category}</Link>
+          <Link to="/" className="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline">{article.category}</Link>
           <span className="text-on-surface-variant text-xs">•</span>
           <span className="text-on-surface-variant text-xs font-medium">{article.date}</span>
         </div>
@@ -89,26 +89,6 @@ export const ArticleDetail: React.FC = () => {
                 <p className="text-sm font-semibold text-on-surface-variant mb-1">Threads Comments Ready</p>
                 <p className="text-xs text-on-surface-variant/70 max-w-[200px]">The Threads integration script will inject community responses here.</p>
               </div>
-            </section>
-
-            {/* Related Games Quick Links */}
-            <section className="bg-surface-container rounded-xl p-6">
-              <h3 className="font-headline font-bold mb-4 text-on-surface">Games Featured Here</h3>
-              <ul className="space-y-3">
-                {article.games.slice(0, 5).map(game => (
-                  <li key={`sidebar-${game.id}`}>
-                    <a href={game.steamUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
-                      <div className="w-10 h-10 rounded bg-surface-container-highest flex-shrink-0 relative">
-                        <SteamHoverTracker appId={game.steamAppId || game.id} title={game.title} imageUrl={game.imageUrl} />
-                      </div>
-                      <div className="overflow-hidden">
-                        <h4 className="text-sm font-bold text-on-surface group-hover:text-primary transition-colors truncate">{game.title}</h4>
-                        <p className="text-[10px] text-on-surface-variant uppercase truncate">{article.category}</p>
-                      </div>
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </section>
           </div>
         </aside>
