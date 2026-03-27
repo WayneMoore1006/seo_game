@@ -5,6 +5,58 @@ export class SteamSaleService {
   private static _appIdCache: Record<string, number | null> = {};
   private static _priceCache: Record<number, PricePoint[]> = {};
 
+  private static readonly CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
+  private static readonly ERROR_BACKOFF_MS = 10 * 60 * 1000; // 10 minutes
+
+  private static _getStorageKey(key: string) {
+    return `steam_tracker_${key}`;
+  }
+
+  private static _getCache<T>(key: string): { data: T; timestamp: number } | null {
+    try {
+      if (typeof window === 'undefined') return null;
+      const cached = localStorage.getItem(this._getStorageKey(key));
+      if (cached) {
+        return JSON.parse(cached);
+      }
+    } catch (e) {
+      console.warn('LocalStorage error:', e);
+    }
+    return null;
+  }
+
+  private static _setCache<T>(key: string, data: T) {
+    try {
+      if (typeof window === 'undefined') return;
+      const payload = { data, timestamp: Date.now() };
+      localStorage.setItem(this._getStorageKey(key), JSON.stringify(payload));
+      localStorage.removeItem(this._getStorageKey(`error_${key}`));
+    } catch (e) {
+      console.warn('LocalStorage error:', e);
+    }
+  }
+
+  private static _checkErrorBackoff(key: string): boolean {
+    try {
+      if (typeof window === 'undefined') return false;
+      const errTimestamp = localStorage.getItem(this._getStorageKey(`error_${key}`));
+      if (errTimestamp) {
+        const timeSinceError = Date.now() - parseInt(errTimestamp, 10);
+        if (timeSinceError < this.ERROR_BACKOFF_MS) {
+          return true;
+        }
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  private static _setErrorBackoff(key: string) {
+    try {
+      if (typeof window === 'undefined') return;
+      localStorage.setItem(this._getStorageKey(`error_${key}`), Date.now().toString());
+    } catch (e) {}
+  }
+
   /**
    * Resolve an apparent Steam AppID by searching the Steam Store.
    * Uses public CORS proxy for client-side functionality.
@@ -12,6 +64,19 @@ export class SteamSaleService {
   static async resolveAppId(title: string): Promise<number | null> {
     if (this._appIdCache[title] !== undefined) return this._appIdCache[title];
     
+    const cacheKey = `appid_${title}`;
+    const cached = this._getCache<number | null>(cacheKey);
+    // AppId maps are permanent. If we have it in local storage, use it.
+    if (cached) {
+       this._appIdCache[title] = cached.data;
+       return cached.data;
+    }
+
+    if (this._checkErrorBackoff(cacheKey)) {
+       console.warn(`[Steam Tracker] In error backoff for resolving ${title}`);
+       return null;
+    }
+
     try {
       const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       const ST_API_EXTERNAL = `https://store.steampowered.com/api/storesearch/?term=${encodeURIComponent(title)}&l=tchinese&cc=TW`;
@@ -28,13 +93,17 @@ export class SteamSaleService {
       }
       
       if (data.total > 0 && data.items && data.items.length > 0) {
-        this._appIdCache[title] = data.items[0].id;
-        return data.items[0].id;
+        const id = data.items[0].id;
+        this._appIdCache[title] = id;
+        this._setCache(cacheKey, id);
+        return id;
       }
       this._appIdCache[title] = null;
+      this._setCache(cacheKey, null);
       return null;
     } catch (error) {
       console.error(`Failed to resolve AppID for title ${title}:`, error);
+      this._setErrorBackoff(cacheKey);
       return null;
     }
   }
@@ -44,84 +113,131 @@ export class SteamSaleService {
    * Note: In production, you should replace the proxy URL with your own backend proxy endpoint
    * to avoid rate limits and improve reliability.
    */
-  static async fetchPriceHistory(appId: number): Promise<PricePoint[]> {
-    if (this._priceCache[appId]) return this._priceCache[appId];
-    
-    try {
-      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const cacheBuster = Math.floor(Date.now() / (15 * 60 * 1000));
-      const ST_API_EXTERNAL = `https://store.steampowered.com/api/appdetails?appids=${appId}&cc=TW&l=tchinese&v=${cacheBuster}`;
-      const ST_API_LOCAL = `/steam-api/api/appdetails?appids=${appId}&cc=TW&l=tchinese&v=${cacheBuster}`;
-      
-      let data: any;
+  static async fetchPriceHistory(
+    appId: number,
+    onRevalidated?: (newData: PricePoint[]) => void
+  ): Promise<PricePoint[]> {
+    const cacheKey = `price_${appId}`;
+
+    // L1: Memory Cache
+    if (this._priceCache[appId]) {
+      return this._priceCache[appId];
+    }
+
+    // L2: Local Storage Cache
+    const cached = this._getCache<PricePoint[]>(cacheKey);
+    const now = Date.now();
+    const isStale = !cached || (now - cached.timestamp > this.CACHE_TTL_MS);
+
+    if (cached && !isStale) {
+      this._priceCache[appId] = cached.data;
+      return cached.data;
+    }
+
+    const doFetch = async () => {
+      if (this._checkErrorBackoff(cacheKey)) {
+        throw new Error('In error backoff');
+      }
+
       try {
-        if (isLocalhost) {
-          const response = await axios.get(ST_API_LOCAL);
-          data = response.data;
-        } else {
-          // Primary Proxy for Production
-          const proxyUrl1 = `https://api.allorigins.win/get?url=${encodeURIComponent(ST_API_EXTERNAL)}&disableCache=${cacheBuster}`;
-          const response = await axios.get(proxyUrl1);
-          data = JSON.parse(response.data.contents);
-        }
-      } catch (err) {
-        if (!isLocalhost) {
-          // Secondary Proxy for Production fallback
-          const proxyUrl2 = `https://corsproxy.io/?${encodeURIComponent(ST_API_EXTERNAL)}`;
-          const fbResponse = await axios.get(proxyUrl2);
-          data = fbResponse.data;
-        } else {
-          throw err;
-        }
-      }
-      
-      const appData = data[appId]?.data;
-      if (!appData) {
-        throw new Error('No data available for this app');
-      }
-
-      let basePrice = 0;
-      let currentPrice = 0;
-      let currentDiscountPercent = 0;
-
-      if (appData.is_free) {
-        basePrice = 0;
-        currentPrice = 0;
-        currentDiscountPercent = 0;
-      } else if (appData.price_overview) {
-        basePrice = appData.price_overview.initial / 100;
-        currentPrice = appData.price_overview.final / 100;
-        currentDiscountPercent = appData.price_overview.discount_percent;
-      } else if (appData.package_groups && appData.package_groups.length > 0) {
-        // Fallback to "general version" in packages
-        const defaultGroup = appData.package_groups.find((g: any) => g.name === 'default') || appData.package_groups[0];
-        if (defaultGroup.subs && defaultGroup.subs.length > 0) {
-          // Use the first (standard) sub package
-          const firstSub = defaultGroup.subs[0];
-          // `price_in_cents_with_discount` is the final current price
-          currentPrice = firstSub.price_in_cents_with_discount / 100;
-          currentDiscountPercent = firstSub.percent_savings || 0;
-          
-          if (currentDiscountPercent > 0) {
-            basePrice = Math.round(currentPrice / (1 - (currentDiscountPercent / 100)));
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const cacheBuster = Math.floor(Date.now() / (15 * 60 * 1000));
+        const ST_API_EXTERNAL = `https://store.steampowered.com/api/appdetails?appids=${appId}&cc=TW&l=tchinese&v=${cacheBuster}`;
+        const ST_API_LOCAL = `/steam-api/api/appdetails?appids=${appId}&cc=TW&l=tchinese&v=${cacheBuster}`;
+        
+        let data: any;
+        try {
+          if (isLocalhost) {
+            const response = await axios.get(ST_API_LOCAL);
+            data = response.data;
           } else {
-            basePrice = currentPrice;
+            // Primary Proxy for Production
+            const proxyUrl1 = `https://api.allorigins.win/get?url=${encodeURIComponent(ST_API_EXTERNAL)}&disableCache=${cacheBuster}`;
+            const response = await axios.get(proxyUrl1);
+            data = JSON.parse(response.data.contents);
+          }
+        } catch (err) {
+          if (!isLocalhost) {
+            // Secondary Proxy for Production fallback
+            const proxyUrl2 = `https://corsproxy.io/?${encodeURIComponent(ST_API_EXTERNAL)}`;
+            const fbResponse = await axios.get(proxyUrl2);
+            data = fbResponse.data;
+          } else {
+            throw err;
+          }
+        }
+        
+        const appData = data[appId]?.data;
+        if (!appData) {
+          throw new Error('No data available for this app');
+        }
+
+        let basePrice = 0;
+        let currentPrice = 0;
+        let currentDiscountPercent = 0;
+
+        if (appData.is_free) {
+          basePrice = 0;
+          currentPrice = 0;
+          currentDiscountPercent = 0;
+        } else if (appData.price_overview) {
+          basePrice = appData.price_overview.initial / 100;
+          currentPrice = appData.price_overview.final / 100;
+          currentDiscountPercent = appData.price_overview.discount_percent;
+        } else if (appData.package_groups && appData.package_groups.length > 0) {
+          // Fallback to "general version" in packages
+          const defaultGroup = appData.package_groups.find((g: any) => g.name === 'default') || appData.package_groups[0];
+          if (defaultGroup.subs && defaultGroup.subs.length > 0) {
+            // Use the first (standard) sub package
+            const firstSub = defaultGroup.subs[0];
+            // `price_in_cents_with_discount` is the final current price
+            currentPrice = firstSub.price_in_cents_with_discount / 100;
+            currentDiscountPercent = firstSub.percent_savings || 0;
+            
+            if (currentDiscountPercent > 0) {
+              basePrice = Math.round(currentPrice / (1 - (currentDiscountPercent / 100)));
+            } else {
+              basePrice = currentPrice;
+            }
+          } else {
+            throw new Error('No pricing options found in packages');
           }
         } else {
-          throw new Error('No pricing options found in packages');
+          throw new Error('No price overview available for this app');
         }
-      } else {
-        throw new Error('No price overview available for this app');
-      }
 
-      // The official Steam API does NOT provide historical price data.
-      // To satisfy the requirement of charting "historical price trends",
-      // we simulate the past 12 months based on the official current and base price.
-      // In a real production system, this data should be fetched from a DB that tracks daily prices.
-      const simulatedHistory = this._simulateHistoryFromCurrent(appId, basePrice, currentPrice, currentDiscountPercent);
+        // The official Steam API does NOT provide historical price data.
+        // To satisfy the requirement of charting "historical price trends",
+        // we simulate the past 12 months based on the official current and base price.
+        // In a real production system, this data should be fetched from a DB that tracks daily prices.
+        const simulatedHistory = this._simulateHistoryFromCurrent(appId, basePrice, currentPrice, currentDiscountPercent);
+        
+        this._priceCache[appId] = simulatedHistory;
+        this._setCache(cacheKey, simulatedHistory);
+        return simulatedHistory;
+      } catch (error) {
+        this._setErrorBackoff(cacheKey);
+        throw error;
+      }
+    };
+
+    if (cached && isStale) {
+      // Stale-while-revalidate
+      this._priceCache[appId] = cached.data;
       
-      this._priceCache[appId] = simulatedHistory;
-      return simulatedHistory;
+      doFetch().then((freshData) => {
+        if (onRevalidated && freshData.length > 0) {
+          onRevalidated(freshData);
+        }
+      }).catch((e) => {
+        console.warn(`[Steam Tracker] Background revalidation failed for ${appId}. Using stale cache.`);
+      });
+
+      return cached.data;
+    }
+
+    try {
+      return await doFetch();
     } catch (error) {
       console.error('Failed to fetch Steam data:', error);
       return [];

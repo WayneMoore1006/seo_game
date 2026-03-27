@@ -11,8 +11,11 @@ description: 實作「懸停觸發」的 Steam 特價追蹤功能。自動分析
 ## 1. 核心邏輯
 - 建立一個 `SteamSaleService.ts`。使用 Steam Store API 獲取遊戲資訊。
 - 實作名稱清洗邏輯，將文章中的遊戲標題轉換為 Steam AppID。
-- **快取與效能優化 (In-Memory Cache & Lazy Load)**：
-    - `SteamSaleService.ts` 內需靜態紀錄已查詢過的 `_appIdCache` 與 `_priceCache`，避免同一分頁內重複發送代理請求。
+- **快取與效能優化 (localStorage Cache, Stale-while-revalidate & Error Backoff)**：
+    - `SteamSaleService.ts` 內需實作三層保護機制：
+        1. **In-Memory & localStorage Cache**：靜態紀錄已查詢過的 `_appIdCache` 與 `_priceCache` 作為第一層，並搭配瀏覽器的 `localStorage`（如 12 小時 TTL）作為持久化快取，大幅縮減同日內的跨頁面重複請求。
+        2. **Stale-while-revalidate (SWR)**：若 `localStorage` 快取已逾期（或失效前），可先立刻回傳舊快取以保持畫面快速渲染（避免整塊空掉），並於背景悄悄發送 API 請求。背景更新成功後再通知 UI 刷新。
+        3. **錯誤退避 (Error Backoff)**：若 Steam API 或 Proxy 發送失敗，需於 `localStorage` 記錄失敗時間戳記，在短暫時間內（例如 10 分鐘內）強制阻止重複請求並沿用舊資料或中止，防範被 Proxy 進一步限流。
     - Steam 官方 API 不提供歷史價格，因此需實作**動態歷史折扣模擬**：只提取「過去 12 個月內」的真實 Steam 各大特賣節檔期（如春季特賣、夏日特賣、自動節、新品節...等），針對每個特賣檔期產生專屬的降價模擬節點，並且不可全都顯示成原價的一條死板直線。
     - **保留真實的現在**：陣列最後一個節點（現在這個月）依然需真實反應 Steam API 拉取到的真實當前價格，若無特價就是原價，若有特價則是真實的優惠價。
 

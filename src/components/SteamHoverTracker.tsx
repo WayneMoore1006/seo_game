@@ -26,7 +26,17 @@ export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, ima
 
         if (!targetAppId) return;
 
-        const history = await SteamSaleService.fetchPriceHistory(targetAppId);
+        const history = await SteamSaleService.fetchPriceHistory(targetAppId, (freshHistory) => {
+          if (!isMounted) return;
+          if (freshHistory.length === 0) return;
+          const freshLastPoint = freshHistory[freshHistory.length - 1];
+          const freshBasePrice = Math.round(freshLastPoint.price / (1 - freshLastPoint.discountPercent / 100));
+          const freshAnalysis = SteamSaleService.analyzePriceTrend(freshHistory, freshLastPoint.price, freshBasePrice);
+          if (freshAnalysis && freshAnalysis.history.length > 0) {
+            setData(freshAnalysis);
+          }
+        });
+
         if (history.length === 0) return;
         
         const lastPoint = history[history.length - 1];
