@@ -4,6 +4,8 @@ Welcome to the **Game Discovery Hub**! This is a modern, React-based web applica
 
 ## 🚀 Live Demo
 [Check out the live website on GitHub Pages!](https://hsuan619.github.io/steam-best-games/)
+<img width="1541" height="675" alt="image" src="https://github.com/user-attachments/assets/01d81a40-b39d-4834-8b54-e5dad4232aaa" />
+<img width="1559" height="516" alt="image" src="https://github.com/user-attachments/assets/f52669a6-f693-49e9-8b77-d434567faf0a" />
 
 ---
 
