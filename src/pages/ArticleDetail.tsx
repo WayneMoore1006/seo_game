@@ -1,31 +1,18 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { articles } from '../data/articles';
+import { Article } from '../types';
 import { ArticleGameCard } from '../components/ui/ArticleGameCard';
 import { SteamHoverTracker } from '../components/SteamHoverTracker';
 import { SteamLiveFloatingWidget } from '../components/SteamLiveFloatingWidget';
 
-export const ArticleDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const article = articles.find(a => a.id === id);
+interface Props {
+  article: Article;
+}
 
-  // Scroll to top on load
+export const ArticleDetail: React.FC<Props> = ({ article }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
-
-  if (!article) {
-    return (
-      <main className="max-w-screen-xl mx-auto px-8 py-32 text-center text-on-surface">
-        <Helmet>
-          <title>找不到文章 | 四隻鳥遊戲推薦</title>
-        </Helmet>
-        <h1 className="text-4xl font-bold mb-4 font-headline">找不到該主題文章</h1>
-        <Link to="/" className="text-primary hover:underline font-bold">返回首頁</Link>
-      </main>
-    );
-  }
+  }, []);
 
   return (
     <main className="max-w-screen-xl mx-auto px-8 py-12 pt-28">
@@ -38,7 +25,7 @@ export const ArticleDetail: React.FC = () => {
       {/* Article Header */}
       <header className="mb-12 max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
-          <Link to="/" className="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline">{article.category}</Link>
+          <a href="/steam-best-games/" className="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline">{article.category}</a>
           <span className="text-on-surface-variant text-xs">•</span>
           <span className="text-on-surface-variant text-xs font-medium">{article.date}</span>
         </div>
@@ -72,23 +59,22 @@ export const ArticleDetail: React.FC = () => {
 
           <div className="text-center pt-8 border-t border-outline-variant/10">
             <p className="mb-4">還意猶未盡嗎？到我們的首頁尋找更多推薦遊戲！</p>
-            <Link to="/" className="primary-gradient text-on-primary px-8 py-3 rounded-md font-bold text-sm inline-flex items-center gap-2 active:scale-95 transition-transform">
+            <a href="/steam-best-games/" className="primary-gradient text-on-primary px-8 py-3 rounded-md font-bold text-sm inline-flex items-center gap-2 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-sm">rocket_launch</span>
               探索更多
-            </Link>
+            </a>
           </div>
         </article>
 
         {/* Sidebar */}
         <aside className="lg:col-span-4">
           <div className="sticky top-28 space-y-10">
-            {/* Related Games Quick Links */}
             <section className="bg-surface-container rounded-xl p-6 border border-outline-variant/10 shadow-2xl shadow-primary/5">
               <h3 className="font-headline font-bold mb-4 text-on-surface">本篇推薦遊戲清單</h3>
               <ul className="space-y-3">
                 {article.games.slice(0, 10).map(game => (
                   <li key={`sidebar-${game.id}`}>
-                    <button 
+                    <button
                       onClick={() => {
                         document.getElementById(`game-${game.id}`)?.scrollIntoView({ behavior: 'smooth' });
                       }}

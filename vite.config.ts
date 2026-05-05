@@ -7,8 +7,19 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
     base: '/steam-best-games/',
+    appType: 'mpa',
     build: {
-      target: 'es2015'
+      target: 'es2015',
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          'duo-best-picks': path.resolve(__dirname, 'duo-best-picks/index.html'),
+          'casual-party': path.resolve(__dirname, 'casual-party/index.html'),
+          'action-puzzle': path.resolve(__dirname, 'action-puzzle/index.html'),
+          'survival-sim': path.resolve(__dirname, 'survival-sim/index.html'),
+          'horror-strategy': path.resolve(__dirname, 'horror-strategy/index.html'),
+        },
+      },
     },
     plugins: [
       react(),

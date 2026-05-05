@@ -1,20 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Article } from '../../types';
 
 interface Props {
   article: Article;
 }
 
-/**
- * @component ThreadsCurationsCard
- * @description 單一主題文章卡片，橫向排列於 ThreadsCurationsCarousel 中。
- * 顯示封面圖、類別標籤、標題、描述、日期，並支援 hover 動畫。
- */
 export const ThreadsCurationsCard: React.FC<Props> = ({ article }) => {
   return (
-    <Link
-      to={`/${article.id}`}
+    <a
+      href={`/steam-best-games/${article.id}/`}
       className="group flex-shrink-0 w-72 bg-surface-container rounded-xl overflow-hidden border border-outline-variant/10 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
     >
       {/* Cover image */}
@@ -49,6 +43,6 @@ export const ThreadsCurationsCard: React.FC<Props> = ({ article }) => {
           <span className="material-symbols-outlined text-xs">arrow_forward</span>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };

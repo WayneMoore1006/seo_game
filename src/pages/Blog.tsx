@@ -1,18 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { articles } from '../data/articles';
-import { POPULAR_TAGS } from '../constants';
 import { ThreadsCurationsCarousel } from '../components/ui/ThreadsCurationsCarousel';
 
-/**
- * @component Blog
- * @description 遊戲網誌與社群推薦入口頁面。
- * 負責渲染動態擷取的 Threads 推薦文章，並提供精選導讀與電子報訂閱功能。
- */
 export const Blog: React.FC = () => {
-
-  const featuredArticles = articles.slice(0, 2); // Sim and Horror
+  const featuredArticles = articles.slice(0, 2);
 
   if (articles.length === 0) {
     return (
@@ -42,7 +34,7 @@ export const Blog: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredArticles.map((article) => (
-            <Link key={article.id} to={`/${article.id}`} className="bg-surface-container rounded-xl overflow-hidden group hover:bg-surface-container-high transition-all duration-300 block">
+            <a key={article.id} href={`/steam-best-games/${article.id}/`} className="bg-surface-container rounded-xl overflow-hidden group hover:bg-surface-container-high transition-all duration-300 block">
               <div className="h-48 overflow-hidden">
                 <img alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={article.heroImage} />
               </div>
@@ -55,7 +47,7 @@ export const Blog: React.FC = () => {
                   <span>{article.date}</span>
                 </div>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
