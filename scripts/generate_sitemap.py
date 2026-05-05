@@ -21,11 +21,11 @@ def generate_sitemap():
     xml_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     
     # 首頁
-    xml_content += f'  <url>\n    <loc>{BASE_URL}/</loc>\n    <lastmod>{now}</lastmod>\n    <priority>1.0</priority>\n  </url>\n'
+    xml_content += f'  <url>\n    <loc>{BASE_URL}/index.html</loc>\n    <lastmod>{now}</lastmod>\n    <priority>1.0</priority>\n  </url>\n'
     
     # 文章分頁
     for cat in categories:
-        xml_content += f'  <url>\n    <loc>{BASE_URL}/{cat["id"]}</loc>\n    <lastmod>{cat["date"]}</lastmod>\n    <priority>0.8</priority>\n  </url>\n'
+        xml_content += f'  <url>\n    <loc>{BASE_URL}/{cat["id"]}/index.html</loc>\n    <lastmod>{now}</lastmod>\n    <priority>0.8</priority>\n  </url>\n'
         
     xml_content += '</urlset>'
 

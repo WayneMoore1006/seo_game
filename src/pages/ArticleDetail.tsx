@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Article } from '../types';
 import { ArticleGameCard } from '../components/ui/ArticleGameCard';
 import { SteamHoverTracker } from '../components/SteamHoverTracker';
@@ -16,16 +15,10 @@ export const ArticleDetail: React.FC<Props> = ({ article }) => {
 
   return (
     <main className="max-w-screen-xl mx-auto px-8 py-12 pt-28">
-      <Helmet>
-        <title>{article.title} | {article.category}遊戲推薦 | 四隻鳥遊戲推薦</title>
-        <meta name="description" content={article.description} />
-        <meta property="og:title" content={`${article.title} - ${article.category}精選推薦`} />
-        <meta property="og:image" content={article.heroImage} />
-      </Helmet>
       {/* Article Header */}
       <header className="mb-12 max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
-          <a href="/steam-best-games/" className="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline">{article.category}</a>
+          <a href="/steam-best-games/index.html" className="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline">{article.category}</a>
           <span className="text-on-surface-variant text-xs">•</span>
           <span className="text-on-surface-variant text-xs font-medium">{article.date}</span>
         </div>
@@ -59,7 +52,7 @@ export const ArticleDetail: React.FC<Props> = ({ article }) => {
 
           <div className="text-center pt-8 border-t border-outline-variant/10">
             <p className="mb-4">還意猶未盡嗎？到我們的首頁尋找更多推薦遊戲！</p>
-            <a href="/steam-best-games/" className="primary-gradient text-on-primary px-8 py-3 rounded-md font-bold text-sm inline-flex items-center gap-2 active:scale-95 transition-transform">
+            <a href="/steam-best-games/index.html" className="primary-gradient text-on-primary px-8 py-3 rounded-md font-bold text-sm inline-flex items-center gap-2 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-sm">rocket_launch</span>
               探索更多
             </a>

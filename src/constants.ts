@@ -5,7 +5,7 @@ import { NavOption } from './types';
  * 集中管理連結路徑，避免在多處使用 Magic Strings。
  */
 export const NAV_LINKS: NavOption[] = [
-  { label: 'Blog', href: '/' }
+  { label: 'Blog', href: '/steam-best-games/index.html' }
 ];
 
 /**
