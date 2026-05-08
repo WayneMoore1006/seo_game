@@ -2,6 +2,127 @@ import { Article } from '../types';
 
 export const articles: Article[] = [
   {
+    "id": "steam-wallet-guide",
+    "category": "教學",
+    "date": "MAY 8, 2026",
+    "title": "Steam 儲值教學懶人包｜超商、信用卡、Steam 錢包儲值方式一次看懂（含退款與跨區注意事項）",
+    "description": "想知道 Steam 怎麼儲值最方便？本文整理超商條碼、信用卡直購、Steam 錢包卡三種方式，附退款規則與跨區購買注意事項，讓你不踩雷、順利買到想玩的遊戲。",
+    "heroImage": "https://news.codashop.com/tw/wp-content/uploads/sites/19/2024/07/STEAM-Free-to-download-games-2023.jpg",
+    "body": `<h2 style="font-size:1.3rem;margin:1.5rem 0 0.5rem;color:#e2e8f0;">為什麼要儲值 Steam 錢包？</h2>
+<p style="margin-bottom:1rem;">Steam 錢包（Steam Wallet）是 Valve 的虛擬帳戶餘額，儲值後可直接用來購買遊戲、DLC、遊戲內道具，也可以在社群市集交易道具。比起每次直接刷信用卡，先儲值再消費能更好地控制預算，也避免衝動消費。</p>
+<div style="background:#0f1e30;border-left:3px solid #60a5fa;padding:0.875rem 1rem;border-radius:0 6px 6px 0;margin:1rem 0;">
+  <p style="color:#60a5fa;font-weight:bold;font-size:0.85rem;margin:0 0 0.4rem;">💡 適用場景</p>
+  <p style="color:#cbd5e1;margin:0;font-size:0.95rem;">購買遊戲本體、DLC 擴充內容、社群市集道具交易、訂閱 Steam 服務等，全部都可以用 Steam 錢包付款。</p>
+</div>
+
+<h2 style="font-size:1.3rem;margin:2rem 0 0.75rem;color:#e2e8f0;">三種主流儲值方式比較</h2>
+<div style="overflow-x:auto;margin-bottom:1.5rem;">
+<table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
+  <thead>
+    <tr style="background:#1a2035;">
+      <th style="padding:0.75rem 1rem;text-align:left;color:#a78bfa;border-bottom:2px solid #7c3aed;white-space:nowrap;">儲值方式</th>
+      <th style="padding:0.75rem 1rem;text-align:left;color:#a78bfa;border-bottom:2px solid #7c3aed;">優點</th>
+      <th style="padding:0.75rem 1rem;text-align:left;color:#a78bfa;border-bottom:2px solid #7c3aed;">缺點 / 限制</th>
+      <th style="padding:0.75rem 1rem;text-align:left;color:#a78bfa;border-bottom:2px solid #7c3aed;white-space:nowrap;">適合對象</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid #1e2a3e;">
+      <td style="padding:0.75rem 1rem;color:#e2e8f0;font-weight:600;white-space:nowrap;">超商條碼</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">免信用卡、現金付款</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">需出門、每筆上限 $2,000 NTD</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">未成年、無信用卡</td>
+    </tr>
+    <tr style="border-bottom:1px solid #1e2a3e;background:#131928;">
+      <td style="padding:0.75rem 1rem;color:#e2e8f0;font-weight:600;white-space:nowrap;">信用卡 / 金融卡</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">最方便、即時到帳</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">需開通網路交易功能</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">一般玩家首選</td>
+    </tr>
+    <tr style="border-bottom:1px solid #1e2a3e;">
+      <td style="padding:0.75rem 1rem;color:#e2e8f0;font-weight:600;white-space:nowrap;">Steam 錢包卡</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">適合送禮、兌換即時</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">需另行購買實體或數位卡</td>
+      <td style="padding:0.75rem 1rem;color:#cbd5e1;">送禮、不想綁定信用卡</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 style="font-size:1.3rem;margin:2rem 0 0.75rem;color:#e2e8f0;">超商儲值步驟教學（以 7-11 為例）</h2>
+<div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;">
+  <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+    <span style="background:#7c3aed;color:#fff;border-radius:50%;width:1.75rem;height:1.75rem;min-width:1.75rem;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:0.8rem;margin-top:0.1rem;">1</span>
+    <span style="color:#cbd5e1;">登入 Steam，點選右上角帳戶名稱 → <strong style="color:#e2e8f0;">帳戶詳細資料</strong>。</span>
+  </div>
+  <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+    <span style="background:#7c3aed;color:#fff;border-radius:50%;width:1.75rem;height:1.75rem;min-width:1.75rem;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:0.8rem;margin-top:0.1rem;">2</span>
+    <span style="color:#cbd5e1;">點選「<strong style="color:#e2e8f0;">新增資金到您的 Steam 錢包</strong>」。</span>
+  </div>
+  <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+    <span style="background:#7c3aed;color:#fff;border-radius:50%;width:1.75rem;height:1.75rem;min-width:1.75rem;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:0.8rem;margin-top:0.1rem;">3</span>
+    <span style="color:#cbd5e1;">選擇金額，付款方式選擇「<strong style="color:#e2e8f0;">超商條碼付款</strong>」（由歐付寶或藍新金流處理）。</span>
+  </div>
+  <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+    <span style="background:#7c3aed;color:#fff;border-radius:50%;width:1.75rem;height:1.75rem;min-width:1.75rem;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:0.8rem;margin-top:0.1rem;">4</span>
+    <span style="color:#cbd5e1;">取得條碼後，前往 7-11 ibon 機台或櫃台繳費。餘額通常在 <strong style="color:#34d399;">15 分鐘內</strong>到帳。</span>
+  </div>
+</div>
+
+<h2 style="font-size:1.3rem;margin:2rem 0 0.75rem;color:#e2e8f0;">如何購買遊戲</h2>
+<p style="margin-bottom:1rem;">儲值完成後，在遊戲頁面點選「<strong>加入購物車</strong>」→「<strong>繼續結帳</strong>」，付款方式選擇「<strong>Steam 帳戶餘額</strong>」即可。若餘額不足，可在結帳時補差額（搭配信用卡）。</p>
+<div style="background:#0d1f14;border-left:3px solid #34d399;padding:0.875rem 1rem;border-radius:0 6px 6px 0;margin:1rem 0;">
+  <p style="color:#34d399;font-weight:bold;font-size:0.85rem;margin:0 0 0.4rem;">✅ 小技巧</p>
+  <p style="color:#cbd5e1;margin:0;font-size:0.95rem;">把想買的遊戲加入 Steam 願望清單，促銷時 Steam 會主動寄信通知你，搭配錢包餘額一鍵購買最省事。</p>
+</div>
+
+<h2 style="font-size:1.3rem;margin:2rem 0 0.75rem;color:#e2e8f0;">退款規則（重要！）</h2>
+<p style="margin-bottom:1rem;">Steam 提供有條件的自助退款，以下是核心規則：</p>
+<ul style="margin-bottom:1rem;padding-left:0;list-style:none;">
+  <li style="margin-bottom:0.75rem;display:flex;align-items:flex-start;gap:0.5rem;"><span style="color:#a78bfa;margin-top:0.2rem;">▸</span><span style="color:#cbd5e1;">購買後 <span style="color:#fbbf24;font-weight:bold;">14 天內</span>，且遊玩時間 <span style="color:#fbbf24;font-weight:bold;">未滿 2 小時</span>，可申請退款。</span></li>
+  <li style="margin-bottom:0.75rem;display:flex;align-items:flex-start;gap:0.5rem;"><span style="color:#a78bfa;margin-top:0.2rem;">▸</span><span style="color:#cbd5e1;">退款金額退回 Steam 錢包（信用卡原路退款視情況而定）。</span></li>
+  <li style="margin-bottom:0.75rem;display:flex;align-items:flex-start;gap:0.5rem;"><span style="color:#a78bfa;margin-top:0.2rem;">▸</span><span style="color:#cbd5e1;">DLC 與遊戲內購有不同規則，部分項目<strong>不可退款</strong>。</span></li>
+</ul>
+<div style="background:#1f0f0f;border-left:3px solid #f87171;padding:0.875rem 1rem;border-radius:0 6px 6px 0;margin:1rem 0;">
+  <p style="color:#f87171;font-weight:bold;font-size:0.85rem;margin:0 0 0.4rem;">⚠️ 注意</p>
+  <p style="color:#fca5a5;margin:0;font-size:0.95rem;">退款次數過多可能被 Steam 限制退款資格，請勿以「試玩」為目的頻繁退款。</p>
+</div>
+
+<h2 style="font-size:1.3rem;margin:2rem 0 0.75rem;color:#e2e8f0;">跨區購買注意事項</h2>
+<div style="background:#1a1208;border-left:3px solid #fbbf24;padding:0.875rem 1rem;border-radius:0 6px 6px 0;margin-bottom:1rem;">
+  <p style="color:#fbbf24;font-weight:bold;font-size:0.85rem;margin:0 0 0.4rem;">⚠️ 高風險行為</p>
+  <p style="color:#fde68a;margin:0;font-size:0.95rem;">Valve 條款明令禁止「以規避地區定價為目的」的跨區購買，違規帳號可能遭封禁。</p>
+</div>
+<ul style="margin-bottom:1rem;padding-left:0;list-style:none;">
+  <li style="margin-bottom:0.75rem;display:flex;align-items:flex-start;gap:0.5rem;"><span style="color:#a78bfa;margin-top:0.2rem;">▸</span><span style="color:#cbd5e1;">某些地區版本遊戲有語言或功能限制，購前需確認。</span></li>
+  <li style="margin-bottom:0.75rem;display:flex;align-items:flex-start;gap:0.5rem;"><span style="color:#34d399;margin-top:0.2rem;">▸</span><span style="color:#cbd5e1;">因旅遊或出差在不同國家正常購買，通常不構成問題。</span></li>
+</ul>
+
+<h2 style="font-size:1.3rem;margin:2rem 0 0.75rem;color:#e2e8f0;">常見問題 FAQ</h2>
+<div style="display:flex;flex-direction:column;gap:0.75rem;">
+  <div style="background:#131928;border:1px solid #1e2a3e;border-radius:8px;padding:1rem 1.25rem;">
+    <p style="color:#a78bfa;font-weight:bold;margin:0 0 0.4rem;font-size:0.95rem;">Q：儲值後多久到帳？</p>
+    <p style="color:#cbd5e1;margin:0;font-size:0.95rem;">信用卡幾乎即時；超商條碼約 5–30 分鐘；Steam 錢包卡兌換後立即到帳。</p>
+  </div>
+  <div style="background:#131928;border:1px solid #1e2a3e;border-radius:8px;padding:1rem 1.25rem;">
+    <p style="color:#a78bfa;font-weight:bold;margin:0 0 0.4rem;font-size:0.95rem;">Q：可以幫別人儲值嗎？</p>
+    <p style="color:#cbd5e1;margin:0;font-size:0.95rem;">可以購買數位版 Steam 錢包卡序號作為禮物，或使用 Steam 禮物功能直接贈送遊戲。</p>
+  </div>
+  <div style="background:#131928;border:1px solid #1e2a3e;border-radius:8px;padding:1rem 1.25rem;">
+    <p style="color:#a78bfa;font-weight:bold;margin:0 0 0.4rem;font-size:0.95rem;">Q：儲值金額可以退回現金嗎？</p>
+    <p style="color:#cbd5e1;margin:0;font-size:0.95rem;"><span style="color:#f87171;font-weight:bold;">不行。</span>Steam 錢包餘額一旦儲值即不可提領，只能用於 Steam 平台消費。</p>
+  </div>
+  <div style="background:#131928;border:1px solid #1e2a3e;border-radius:8px;padding:1rem 1.25rem;">
+    <p style="color:#a78bfa;font-weight:bold;margin:0 0 0.4rem;font-size:0.95rem;">Q：台灣 Steam 是新台幣計價嗎？</p>
+    <p style="color:#cbd5e1;margin:0;font-size:0.95rem;">是的，自 2022 年起台灣 Steam 已改為 <span style="color:#34d399;font-weight:bold;">新台幣（NTD）</span>計價，不需再換算美金。</p>
+  </div>
+  <div style="background:#131928;border:1px solid #1e2a3e;border-radius:8px;padding:1rem 1.25rem;">
+    <p style="color:#a78bfa;font-weight:bold;margin:0 0 0.4rem;font-size:0.95rem;">Q：未成年人可以儲值嗎？</p>
+    <p style="color:#cbd5e1;margin:0;font-size:0.95rem;">Steam 無強制年齡驗證。超商條碼付款不需信用卡，技術上未成年人可操作，但建議家長監督消費。</p>
+  </div>
+</div>`
+  },
+  {
     "id": "duo-best-picks",
     "category": "雙人必玩",
     "date": "MAR 25, 2026",

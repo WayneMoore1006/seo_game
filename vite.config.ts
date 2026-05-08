@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
           'action-puzzle': path.resolve(__dirname, 'action-puzzle/index.html'),
           'survival-sim': path.resolve(__dirname, 'survival-sim/index.html'),
           'horror-strategy': path.resolve(__dirname, 'horror-strategy/index.html'),
+          'steam-wallet-guide': path.resolve(__dirname, 'steam-wallet-guide/index.html'),
         },
       },
     },
