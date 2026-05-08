@@ -7,11 +7,6 @@ interface Props {
   articles: Article[];
 }
 
-/**
- * @component ThreadsCurationsCarousel
- * @description 橫向可滾動的主題文章展示櫥窗，支援拖曳、按鈕切換、兩側漸層遮罩。
- * 消費 src/data/articles.ts 資料，文章數量自動延展，無需手動調整版面。
- */
 export const ThreadsCurationsCarousel: React.FC<Props> = ({ articles }) => {
   const { scrollRef, scrollState, updateScrollState, scrollBy, onMouseDown } = useCarouselScroll();
 

@@ -111,14 +111,12 @@ export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, ima
         alt={title}
       />
       
-      {/* Fake Play Button - subtle overlay until hovered */}
       <div className={`absolute inset-0 bg-gradient-to-t from-[#0A0F16]/80 via-transparent to-transparent flex flex-col justify-center items-center transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-0 group-hover/tracker:opacity-100'}`}>
         <div className="w-16 h-16 rounded-full bg-blue-500/90 flex items-center justify-center backdrop-blur-md scale-90 group-hover/tracker:scale-100 transition-transform shadow-xl shadow-blue-500/20">
           <span className="material-symbols-outlined text-white text-3xl drop-shadow" style={{ fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
         </div>
       </div>
 
-      {/* Hover Overlay Tracker Widget */}
       <AnimatePresence>
         {isHovered && (
           <motion.div 
@@ -128,16 +126,12 @@ export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, ima
             transition={{ duration: 0.25, ease: 'easeOut' }}
             className="absolute inset-0 flex items-center justify-end p-8 backdrop-blur-[1px]"
           >
-            {/* The exact panel container matching the image */}
             <div className="bg-[#151921]/95 text-white border border-white/5 rounded-2xl p-6 shadow-2xl w-full max-w-[340px] transform transition-all group-hover/tracker:-translate-x-2">
-              
-              {/* Header */}
               <div className="flex items-center gap-2 mb-4">
                 <span className="material-symbols-outlined text-blue-400 text-[20px] font-light">trending_up</span>
                 <span className="text-[11px] font-bold tracking-[0.15em] text-slate-300 uppercase mt-0.5">Steam 價格趨勢</span>
               </div>
               
-              {/* Price Row */}
               <div className="flex items-center gap-3 mb-5">
                 {data && data.history[data.history.length - 1].discountPercent > 0 && (
                   <span className="border border-green-500/40 text-green-400 bg-green-500/10 px-2 py-0.5 rounded text-sm font-bold tracking-wider">
@@ -157,7 +151,6 @@ export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, ima
                 </div>
               </div>
 
-              {/* Recommendation Pill */}
               <div className={`border rounded-lg px-4 py-3 flex items-center gap-2.5 ${boxClass}`}>
                 <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>{iconName || 'error_outline'}</span>
                 <span className="text-[13px] font-bold tracking-wide">
@@ -165,7 +158,6 @@ export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, ima
                 </span>
               </div>
 
-              {/* Chart */}
               <div className="mt-8 h-[75px] w-full relative">
                 {data ? (
                   <ResponsiveContainer width="100%" height="100%">

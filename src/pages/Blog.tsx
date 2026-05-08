@@ -16,7 +16,6 @@ export const Blog: React.FC = () => {
 
   return (
     <main className="max-w-screen-2xl mx-auto px-8 py-12 pt-24">
-      {/* Editor's Picks / Bento Grid */}
       <section className="mb-24">
         <div className="flex justify-between items-end mb-8">
           <div>
@@ -44,7 +43,6 @@ export const Blog: React.FC = () => {
         </div>
       </section>
 
-      {/* All Threads Community Curations — Horizontal Carousel */}
       <ThreadsCurationsCarousel articles={articles} />
     </main>
   );

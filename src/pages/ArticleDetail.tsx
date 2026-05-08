@@ -15,7 +15,6 @@ export const ArticleDetail: React.FC<Props> = ({ article }) => {
 
   return (
     <main className="max-w-screen-xl mx-auto px-8 py-12 pt-28">
-      {/* Article Header */}
       <header className="mb-12 max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
           <a href="/steam-best-games/index.html" className="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline">{article.category}</a>
@@ -30,25 +29,28 @@ export const ArticleDetail: React.FC<Props> = ({ article }) => {
         </p>
       </header>
 
-      {/* Hero Image */}
       <div className="w-full aspect-[21/9] rounded-2xl overflow-hidden mb-16 shadow-2xl shadow-primary/5 border border-outline-variant/10 relative">
         <SteamHoverTracker
-          appId={article.games[0]?.steamAppId || article.games[0]?.id}
-          title={article.games[0]?.title || article.title}
+          appId={article.games?.[0]?.steamAppId || article.games?.[0]?.id}
+          title={article.games?.[0]?.title || article.title}
           imageUrl={article.heroImage}
         />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-        {/* Main Content */}
         <article className="lg:col-span-8 space-y-12 text-on-surface-variant text-lg leading-relaxed">
           <p>
             我們蒐集了 Threads 廣大社群粉絲們最真實的推薦，整理出這份精選遊戲名單！從輕鬆派對到硬派驚悚，以下是本次「{article.category}」分類中最受矚目的 Steam 遊戲！👇
           </p>
 
-          {article.games.map((game, index) => (
-            <ArticleGameCard key={game.id} game={game} index={index} />
-          ))}
+          {article.games && article.games.length > 0
+            ? article.games.map((game, index) => (
+                <ArticleGameCard key={game.id} game={game} index={index} />
+              ))
+            : article.body && (
+                <div dangerouslySetInnerHTML={{ __html: article.body }} />
+              )
+          }
 
           <div className="text-center pt-8 border-t border-outline-variant/10">
             <p className="mb-4">還意猶未盡嗎？到我們的首頁尋找更多推薦遊戲！</p>
@@ -59,13 +61,12 @@ export const ArticleDetail: React.FC<Props> = ({ article }) => {
           </div>
         </article>
 
-        {/* Sidebar */}
         <aside className="lg:col-span-4">
           <div className="sticky top-28 space-y-10">
             <section className="bg-surface-container rounded-xl p-6 border border-outline-variant/10 shadow-2xl shadow-primary/5">
               <h3 className="font-headline font-bold mb-4 text-on-surface">本篇推薦遊戲清單</h3>
               <ul className="space-y-3">
-                {article.games.slice(0, 10).map(game => (
+                {(article.games ?? []).slice(0, 10).map(game => (
                   <li key={`sidebar-${game.id}`}>
                     <button
                       onClick={() => {
@@ -89,7 +90,7 @@ export const ArticleDetail: React.FC<Props> = ({ article }) => {
         </aside>
       </div>
 
-      <SteamLiveFloatingWidget games={article.games} category={article.category} />
+      <SteamLiveFloatingWidget games={article.games ?? []} category={article.category} />
     </main>
   );
 };

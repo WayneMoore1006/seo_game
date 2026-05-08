@@ -23,7 +23,6 @@ export const SteamLiveFloatingWidget: React.FC<Props> = ({ games, category }) =>
           transition={{ type: 'spring', stiffness: 260, damping: 20 }}
           className="fixed bottom-6 right-6 z-50 w-72 bg-[#171a21]/95 backdrop-blur-md rounded-lg shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-[#2a475e] overflow-hidden flex flex-col"
         >
-          {/* Header bar — Clickable to Toggle Collapse */}
           <div
             className="bg-gradient-to-r from-[#1b2838] to-[#2a475e] px-3 py-2 flex justify-between items-center border-b border-white/5 cursor-pointer hover:bg-[#2a475e] transition-colors"
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -66,7 +65,6 @@ export const SteamLiveFloatingWidget: React.FC<Props> = ({ games, category }) =>
                     className="cursor-pointer group"
                     onClick={() => window.open(activeGame.gameUrl, '_blank')}
                   >
-                    {/* Preview image */}
                     <div className="relative aspect-video bg-black overflow-hidden">
                       <img
                         src={activeGame.previewImageUrl}
@@ -81,7 +79,6 @@ export const SteamLiveFloatingWidget: React.FC<Props> = ({ games, category }) =>
                       </div>
                     </div>
 
-                    {/* Game info */}
                     <div className="p-3 bg-[#171a21]">
                       <h4 className="text-white font-bold text-sm truncate group-hover:text-[#66c0f4] transition-colors">{activeGame.title}</h4>
                       <div className="flex items-center gap-1 mt-1 text-[#66c0f4]/80">
