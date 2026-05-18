@@ -7,6 +7,22 @@ export interface GameRecommendation {
   steamUrl: string;
   steamAppId?: number;
   playerCount?: string;
+  tags?: string[];
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ComparisonRow {
+  name: string;
+  playerCount: string;
+  genre: string;
+  difficulty: string;
+  audience: string;
+  isCoopFocused: boolean;
+  whyRecommend: string;
 }
 
 export interface Article {
@@ -18,6 +34,16 @@ export interface Article {
   heroImage: string;
   games?: GameRecommendation[];
   body?: string;
+  // SEO 補強欄位
+  seoTitle?: string;
+  seoDescription?: string;
+  targetKeywords?: string[];
+  heroTags?: string[];
+  audience?: string[];
+  selectionGuide?: string[];
+  faqs?: FAQ[];
+  comparisonTable?: ComparisonRow[];
+  relatedArticleIds?: string[];
 }
 
 export interface PricePoint {
@@ -56,3 +82,15 @@ export interface SteamLiveGame {
 }
 
 export type SteamLiveStatus = 'loading' | 'active' | 'empty' | 'hidden';
+
+export interface SteamRankingGame extends GameRecommendation {
+  heatScore: number;
+  currentPrice: number;
+  basePrice: number;
+  discountPercent: number;
+  isFree: boolean;
+  categoryName: string;
+  articleId?: string;
+  internalUrl?: string;
+  gameId?: string | number;
+}

@@ -7,6 +7,7 @@ import { SteamSaleData, SteamHoverTrackerProps } from '../types';
 export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, imageUrl, title }) => {
   const [data, setData] = useState<SteamSaleData | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDismissedByClick, setIsDismissedByClick] = useState(false);
   const hasFetched = React.useRef(false);
 
   useEffect(() => {
@@ -102,8 +103,21 @@ export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, ima
   return (
     <div 
       className="w-full h-full relative overflow-hidden bg-[#0A0F16] group/tracker cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => {
+        if (!isDismissedByClick) setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsDismissedByClick(false);
+      }}
+      onClick={(e) => {
+        if (isHovered) {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsHovered(false);
+          setIsDismissedByClick(true);
+        }
+      }}
     >
       <img 
         className={`w-full h-full object-cover transition-all duration-700 opacity-90 group-hover/tracker:opacity-100 ${isHovered ? 'scale-100 blur-[2px] brightness-50' : 'group-hover/tracker:scale-105'}`} 
@@ -126,7 +140,19 @@ export const SteamHoverTracker: React.FC<SteamHoverTrackerProps> = ({ appId, ima
             transition={{ duration: 0.25, ease: 'easeOut' }}
             className="absolute inset-0 flex items-center justify-end p-8 backdrop-blur-[1px]"
           >
-            <div className="bg-[#151921]/95 text-white border border-white/5 rounded-2xl p-6 shadow-2xl w-full max-w-[340px] transform transition-all group-hover/tracker:-translate-x-2">
+            <div className="bg-[#151921]/95 text-white border border-white/5 rounded-2xl p-6 shadow-2xl w-full max-w-[340px] transform transition-all group-hover/tracker:-translate-x-2 relative">
+              <button 
+                className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setIsHovered(false);
+                  setIsDismissedByClick(true);
+                }}
+              >
+                <span className="material-symbols-outlined text-[16px]">close</span>
+              </button>
+
               <div className="flex items-center gap-2 mb-4">
                 <span className="material-symbols-outlined text-blue-400 text-[20px] font-light">trending_up</span>
                 <span className="text-[11px] font-bold tracking-[0.15em] text-slate-300 uppercase mt-0.5">Steam 價格趨勢</span>
